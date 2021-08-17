@@ -26,7 +26,7 @@ class DeliveryHistoryActivity : BaseActivity(), OnAClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_delivery_history)
         titleText = "出貨紀錄"
-        setupLightActionBar()
+        setupLightWeightActionBar()
         tv_sort_title.text = "出貨日期↓(新到舊)"
 
         displayList.clear()

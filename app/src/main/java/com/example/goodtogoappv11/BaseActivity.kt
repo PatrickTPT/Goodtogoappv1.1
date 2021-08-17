@@ -48,7 +48,7 @@ open class BaseActivity : AppCompatActivity() {
         }
     }*/
 
-    open fun setupLightActionBar(){
+    open fun setupLightWeightActionBar(){
 
         val actionBar = supportActionBar
         if(actionBar != null) {

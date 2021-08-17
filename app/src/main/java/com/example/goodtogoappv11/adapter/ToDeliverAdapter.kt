@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.goodtogoappv11.EditBoxInStockActivity
+import com.example.goodtogoappv11.EditBoxToDeliverActivity
 import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.model.Box
 import com.example.goodtogoappv11.model.Constants
@@ -77,7 +77,7 @@ class ToDeliverAdapter(
                                         items.removeAt(absoluteAdapterPosition)
                                         notifyDataSetChanged()
                                     }
-                                    .setNegativeButton("把這箱留著"){
+                                    .setNeutralButton("把這箱留著"){
                                             dialog, _->
                                         dialog.dismiss()
                                     }
@@ -96,9 +96,9 @@ class ToDeliverAdapter(
                     .setItems(editOptionList){_,which->
                         when(which){
                             0 -> {
-                                val intent = Intent(context, EditBoxInStockActivity::class.java)
+                                val intent = Intent(context, EditBoxToDeliverActivity::class.java)
                                 intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
-                                intent.putExtra("date","The boxing date")
+                                intent.putExtra("date","${items[absoluteAdapterPosition].date}")
                                 ContextCompat.startActivity(context, intent, null)
                                 //TODO
                             }
@@ -123,7 +123,7 @@ class ToDeliverAdapter(
                         dialog.dismiss()
 
                     }
-                    .setNegativeButton("取消"){
+                    .setNeutralButton("取消"){
                             dialog, _->
                         dialog.dismiss()
                     }
@@ -142,7 +142,7 @@ class ToDeliverAdapter(
                         dialog.dismiss()
 
                     }
-                    .setNegativeButton("取消"){
+                    .setNeutralButton("取消"){
                             dialog, _->
                         dialog.dismiss()
                     }

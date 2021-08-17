@@ -25,7 +25,7 @@ class ToDeliverActivity : BaseActivity(), OnAClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_deliver)
         titleText = "待配送"
-        setupLightActionBar()
+        setupLightWeightActionBar()
         tv_sort_title.text = "出貨日期↓(新到舊)"
 
 

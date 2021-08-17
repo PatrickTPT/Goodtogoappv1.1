@@ -36,14 +36,17 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
-            android:text="離開"/>
+            android:text="離開"
+            android:padding="20dp"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/nextRe_button"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/colorPrimary"
-            android:text="繼續下一筆回收"/>
+            android:text="繼續下一筆回收"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

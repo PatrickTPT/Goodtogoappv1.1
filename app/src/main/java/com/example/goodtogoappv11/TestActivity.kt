@@ -15,7 +15,7 @@ class TestActivity : BaseActivity(), OnAClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_test)
         titleText = "Choose Destination"
-        setupLightActionBar()
+        setupLightWeightActionBar()
         setupStoreRecyclerView()
         val storeList = Datasource().loadStores()
 

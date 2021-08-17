@@ -62,7 +62,7 @@ class InStockAdapter (
                             Toast.makeText(context,"解除裝箱完畢",Toast.LENGTH_SHORT).show()
                             notifyDataSetChanged()
                         }
-                        .setNegativeButton("把這箱留著"){
+                        .setNeutralButton("把這箱留著"){
                             dialog, _->
                             dialog.dismiss()
                         }

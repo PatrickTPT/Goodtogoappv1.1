@@ -22,7 +22,7 @@ class ToSignForActivity : BaseActivity(), OnAClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_to_sign_for)
         titleText = "待簽收"
-        setupLightActionBar()
+        setupLightWeightActionBar()
         marrayList.addAll(Datasource().loadBoxesbkup())
         displayList.addAll(Datasource().loadBoxesbkup())
 

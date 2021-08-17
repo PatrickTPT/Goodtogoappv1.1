@@ -11,7 +11,7 @@ class SettingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
         titleText = "設定"
-        setupLightActionBar()
+        setupLightWeightActionBar()
 
         btn_sign_out.setOnClickListener(){
 

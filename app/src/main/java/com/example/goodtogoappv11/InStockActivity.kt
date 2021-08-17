@@ -42,7 +42,7 @@ class InStockActivity : BaseActivity(), OnAClickListener {
         val view = binding.root
         setContentView(view)*/
         titleText = "庫存"
-        setupLightActionBar()
+        setupLightWeightActionBar()
 
 
         displayList.clear()
@@ -84,10 +84,9 @@ class InStockActivity : BaseActivity(), OnAClickListener {
                 tv_filter_grande.setTextColor(getResources().getColor(R.color.mediumGrey))
                 ll_filter_tall.setBackgroundResource(R.drawable.layout_filter_grey_bg)
                 tv_filter_tall.setTextColor(getResources().getColor(R.color.mediumGrey))
+
                 displayList.clear()
-                mediumList.clear()
-                mediumList.addAll(marrayList)
-                displayList.addAll(marrayList)
+                displayList.addAll(mediumList)
                 filterChoice = FILTER_NOT
                 adapter.notifyDataSetChanged()
             }
@@ -101,16 +100,10 @@ class InStockActivity : BaseActivity(), OnAClickListener {
                 tv_filter_not.setTextColor(getResources().getColor(R.color.mediumGrey))
                 ll_filter_tall.setBackgroundResource(R.drawable.layout_filter_grey_bg)
                 tv_filter_tall.setTextColor(getResources().getColor(R.color.mediumGrey))
-                displayList.clear()
-                mediumList.clear()
-                marrayList.forEach {
-                    if (it.cupType == "Grande") {
-                        displayList.add(it)
-                        mediumList.add(it)
-                    }
-                }
+                displayList.filter{it.cupType == "Grande"}
                 filterChoice = FILTER_GRANDE
                 adapter.notifyDataSetChanged()
+
             }
         }
 
@@ -122,16 +115,10 @@ class InStockActivity : BaseActivity(), OnAClickListener {
                 tv_filter_not.setTextColor(getResources().getColor(R.color.mediumGrey))
                 ll_filter_grande.setBackgroundResource(R.drawable.layout_filter_grey_bg)
                 tv_filter_grande.setTextColor(getResources().getColor(R.color.mediumGrey))
-                displayList.clear()
-                mediumList.clear()
-                marrayList.forEach {
-                    if (it.cupType == "Tall") {
-                        mediumList.add(it)
-                        displayList.add(it)
-                    }
-                }
+                displayList.filter{it.cupType == "Tall"}
                 filterChoice = FILTER_TALL
                 adapter.notifyDataSetChanged()
+
             }
         }
 

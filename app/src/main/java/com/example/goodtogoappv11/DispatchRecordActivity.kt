@@ -20,7 +20,7 @@ class DispatchRecordActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dispatch_record)
         titleText = "調度紀錄"
-        setupLightActionBar()
+        setupLightWeightActionBar()
 
         displayList.addAll(Datasource().loadBoxesbkup())
 

@@ -21,7 +21,7 @@ class RecycleHistoryActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycle_history)
         titleText = "回收紀錄"
-        setupLightActionBar()
+        setupLightWeightActionBar()
         marrayList.addAll(Datasource().loadBoxesbkup())
         displayList.addAll(Datasource().loadBoxesbkup())
 

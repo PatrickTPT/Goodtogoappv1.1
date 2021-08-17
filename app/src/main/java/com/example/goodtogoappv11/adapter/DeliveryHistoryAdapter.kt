@@ -57,7 +57,7 @@ class DeliveryHistoryAdapter(
                         dialog.dismiss()
 
                     }
-                    .setNegativeButton("不要"){
+                    .setNeutralButton("不要"){
                             dialog, _->
                         dialog.dismiss()
                     }

@@ -1,19 +1,15 @@
 package com.example.goodtogoappv11
 
-import android.util.Base64.encodeToString
-import com.example.goodtogoappv11.model.Constants
-import java.util.Base64
-
 fun main(){
 
 
 
-    val base64Encoded = Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
+    /*val base64Encoded = Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
 
     println(Constants.SECRET_KEY_CURRENT)
     println(base64Encoded)
     println(base64Encoded.length)
-
+*/
 
         /* Box Generator
         var currentCupCount = Constants.randomCupNumberStand
