@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="2dp"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout android:id="@+id/ll_whole_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/shown_box_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_delivery_today"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:text="今天出貨"
+                            android:background="@drawable/bg_red_frame"
+                            android:textColor="@color/colorAccent"
+                            android:visibility="gone"
+                            android:textSize="10sp"
+                            tools:visibility="visible"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_wait_to_sign"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp"
+                            android:layout_marginEnd="4dp"
+                            android:background="@color/goodtogo_darker_yellow"
+                            android:textColor="@color/white"
+                            android:visibility="gone"
+                            tools:visibility="visible"
+                            android:textSize="10sp"
+                            android:text="待簽收" />
+
+                        <TextView
+                            android:id="@+id/tv_box_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:textColor="@color/mediumGrey"
+                            android:text="title" />
+
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/tv_box_id"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Box Id" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_cup_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="type" />
+
+                <TextView
+                    android:id="@+id/tv_x"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="x" />
+
+                <TextView
+                    android:id="@+id/tv_cup_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:text="number" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_down_black_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_box_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="visible"
+                >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/mediumGrey"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp"
+                    android:textSize="12sp"
+                    android:text="@string/long_text_example" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/mediumGrey"/>
+
+                <LinearLayout android:id="@+id/ll_in_stock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/report"
+                        android:textColor="@color/mediumGrey"/>
+
+                    <TextView
+                        android:id="@+id/tv_dismiss_box"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="32dp"
+                        android:text="@string/cancel_boxing"
+                        android:textColor="@color/colorAccent"/>
+
+                    <TextView android:id="@+id/tv_edit_box_content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="32dp"
+                        android:textColor="@color/goodtogo_yellow"
+                        android:text="@string/edit_boxing" />
+
+                    <TextView android:id="@+id/tv_deliver_box"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/to_deliver"
+                        android:textColor="@color/goodtogo_blue"/>
+
+                </LinearLayout>
+                <LinearLayout android:id="@+id/ll_to_deliver"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/report"
+                        android:textColor="@color/mediumGrey"/>
+
+                    <TextView android:id="@+id/tv_cancel_delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="32dp"
+                        android:text="@string/cancel_delivery"
+                        android:textColor="@color/colorAccent"/>
+
+                    <TextView android:id="@+id/tv_edit_delivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="32dp"
+                        android:text="@string/edit_delivery"
+                        android:textColor="@color/goodtogo_yellow"/>
+
+                    <TextView android:id="@+id/tv_delivery_arrived"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/done_delivery"
+                        android:textColor="@color/goodtogo_blue"/>
+
+                    <TextView android:id="@+id/tv_sign_box_for_store"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_for_store"
+                        android:textColor="@color/goodtogo_blue"
+                        android:visibility="gone"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/ll_delivery_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/report"
+                        android:textColor="@color/mediumGrey"/>
+
+                    <TextView
+                        android:id="@+id/tv_return_to_stock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/return_to_stock"
+                        android:textColor="@color/colorAccent"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/ll_to_sign_for"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/report"
+                        android:textColor="@color/mediumGrey"/>
+
+                    <TextView android:id="@+id/tv_sign_box_from_other_station"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_for"
+                        android:textColor="@color/goodtogo_blue"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

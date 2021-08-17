@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent">
+
+
+    <io.github.florent37.shapeofview.shapes.CutCornerView
+        android:id="@+id/ccv_bottom_info_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:shape_cutCorner_topLeftSize="14dp"
+        app:shape_cutCorner_topRightSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="end"
+        android:elevation="4dp">
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_info_box_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/goodtogo_blue"
+                android:padding="20dp"
+                android:gravity="right"
+                android:textColor="@color/white"
+                android:text="BoxId"/>
+
+
+            <TextView
+                android:id="@+id/tv_delivery_box_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:text="#34312\n#2324\n#31313\n#31321"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+    </io.github.florent37.shapeofview.shapes.CutCornerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

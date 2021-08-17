@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrey"
+    tools:context=".InStockActivity">
+
+    <TextView
+        android:id="@+id/tv_noContainer1_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/no_box_inside"
+        android:visibility="visible"
+        tools:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/ll_sort_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_noContainer1_1"
+        android:background="@color/transparent"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:visibility="visible">
+
+        <include layout="@layout/item_sort" />
+
+        <LinearLayout
+            android:id="@+id/ll_filter_not"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/layout_filter_bg"
+            android:elevation="1dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+
+            <TextView
+                android:id="@+id/tv_filter_not"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="未"
+                android:textColor="@color/goodtogo_yellow" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_filter_grande"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/layout_filter_grey_bg"
+            android:elevation="1dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+
+            <TextView
+                android:id="@+id/tv_filter_grande"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="大"
+                android:textColor="@color/mediumGrey" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_filter_tall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/layout_filter_grey_bg"
+            android:elevation="1dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tv_filter_tall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="小"
+                android:textColor="@color/mediumGrey" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_InStock"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_sort_bar"
+        android:layout_above="@id/ccv_box_info"
+        android:padding="4dp"
+        android:scrollbars="vertical"
+        app:layoutManager="LinearLayoutManager"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/packingFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/ccv_box_info"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/fab_margin_side"
+        android:layout_marginBottom="@dimen/fab_margin_bottom"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_add_white_24" />
+
+    <io.github.florent37.shapeofview.shapes.CutCornerView
+        android:id="@+id/ccv_box_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/bottom_info_box_margin_horizontal"
+        android:elevation="4dp"
+        app:shape_cutCorner_topLeftSize="14dp"
+        app:shape_cutCorner_topRightSize="14dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_trytocut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/goodtogo_blue"
+            android:padding="20dp"
+            app:shapeAppearanceOverlay="@style/CornerCut">
+
+
+            <LinearLayout
+                android:id="@+id/ll_box_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView android:id="@+id/tv_box_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="8"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="箱 | "
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView android:id="@+id/tv_cup_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="190"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="個"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/v_instock_expandable_info_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/ll_box_content"
+                app:layout_constraintTop_toBottomOf="@id/ll_box_content"
+                tools:visibility="visible">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/mediumGrey" />
+
+                <TextView
+                    android:id="@+id/tv_instock_box_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="12oz glasses x15\nBig x 1016\nSmall x 562"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.github.florent37.shapeofview.shapes.CutCornerView>
+
+
+</RelativeLayout>

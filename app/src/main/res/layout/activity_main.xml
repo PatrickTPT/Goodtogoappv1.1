@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/lightGrey"
+        android:orientation="vertical">
+
+
+
+    <!-- inStock-->
+        <LinearLayout
+            android:id="@+id/column1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tag1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textSize="@dimen/section_header_text_main"
+                android:textColor="@color/goodtogo_blue_variant"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="20dp"
+                android:text="@string/instock_string"
+                />
+
+            <TextView
+                android:id="@+id/inStockBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:gravity="center"
+                android:text="@string/instock_string"
+
+                />
+        </LinearLayout>
+    <!-- toDeliver-->
+        <LinearLayout
+            android:id="@+id/column2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tag2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textSize="@dimen/section_header_text_main"
+                android:textColor="@color/goodtogo_blue_variant"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="20dp"
+                android:text="@string/deliver_string" />
+
+            <TextView
+                android:id="@+id/toDeliverBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:background="@color/transparent"
+                android:gravity="center"
+                android:text="待配送"
+                 />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mediumGrey"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <TextView
+                android:id="@+id/deliveryRecordBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:background="@color/transparent"
+                android:text="出貨紀錄"
+                android:gravity="center"
+                 />
+
+        </LinearLayout>
+    <!-- interStation-->
+        <LinearLayout
+            android:id="@+id/column3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tag3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textSize="@dimen/section_header_text_main"
+                android:textColor="@color/goodtogo_blue_variant"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="20dp"
+                android:text="調度"
+                />
+
+            <TextView
+                android:id="@+id/toSignForBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:background="@color/transparent"
+                android:text="待簽收入庫"
+                android:gravity="center"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mediumGrey"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <TextView
+                android:id="@+id/dispatchRecordBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:background="@color/transparent"
+                android:text="調度紀錄"
+                android:gravity="center"
+                />
+
+        </LinearLayout>
+    <!-- readyToClean-->
+        <LinearLayout
+            android:id="@+id/column4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <TextView
+                android:id="@+id/tag4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:textSize="@dimen/section_header_text_main"
+                android:textColor="@color/goodtogo_blue_variant"
+                android:paddingTop="8dp"
+                android:paddingHorizontal="20dp"
+                android:text="回收" />
+
+
+            <TextView
+                android:id="@+id/storeListBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/item_list_padding_main"
+                android:background="@color/transparent"
+
+                android:text="回收(從…)"
+                android:textSize="@dimen/item_list_main" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mediumGrey"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <TextView
+                android:id="@+id/recycleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:text="回收"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mediumGrey"
+                android:layout_marginHorizontal="20dp"
+                />
+
+            <TextView
+                android:id="@+id/recycleRecordBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/item_list_padding_main"
+                android:textSize="@dimen/item_list_main"
+                android:background="@color/transparent"
+                android:text="回收紀錄"
+                android:gravity="center"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/mediumGrey"
+                android:layout_marginHorizontal="20dp"
+                />
+        </LinearLayout>
+
+
+
+</LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeliveryDetailActivity"
+    android:background="@color/lightGrey">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/ab_actionBar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        >
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/tb_mToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintTop_toBottomOf="@id/ab_actionBar">
+
+        <TextView android:id="@+id/tv_select_destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:background="@color/white"
+            android:text="請選擇出貨地點" />
+
+        <TextView android:id="@+id/tv_select_deliveryDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:text="date" />
+    </LinearLayout>
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fab_deliver_box"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toTopOf="@id/ccv_bottom_info_box"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:src="@drawable/ic_arrow_forward_black_24"
+    android:layout_marginEnd="@dimen/fab_margin_side"
+    android:layout_marginBottom="@dimen/fab_margin_bottom"
+
+    />
+
+    <io.github.florent37.shapeofview.shapes.CutCornerView
+        android:id="@+id/ccv_bottom_info_box"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        app:shape_cutCorner_topLeftSize="14dp"
+        app:shape_cutCorner_topRightSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_gravity="right">
+
+        <LinearLayout
+            android:id="@+id/ll_bottom_info_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+        <TextView android:id="@+id/tv_bottom_info_box_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/goodtogo_blue"
+            android:padding="20dp"
+            android:gravity="right"
+            android:textColor="@color/white"
+            android:text="BoxId"/>
+
+        </LinearLayout>
+    </io.github.florent37.shapeofview.shapes.CutCornerView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

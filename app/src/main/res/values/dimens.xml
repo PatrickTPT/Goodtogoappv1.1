@@ -1,0 +1,17 @@
+<resources>
+    <dimen name="fab_margin_side">20dp</dimen>
+    <dimen name="fab_margin_bottom">12dp</dimen>
+    <dimen name="input_text">16sp</dimen>
+    <dimen name="section_header_text_main">14sp</dimen>
+    <dimen name="item_list_main">18sp</dimen>
+    <dimen name="item_list_padding_main">18dp</dimen>
+
+    <!-- -->
+    <dimen name="bottom_info_box_margin_horizontal">10dp</dimen>
+
+    <!-- Store List (for recycler view)-->
+    <dimen name="textSize_store_name">18sp</dimen>
+    <dimen name="textSize_store_info">12sp</dimen>
+    <dimen name="margin_H_store_divider">6dp</dimen>
+
+</resources>

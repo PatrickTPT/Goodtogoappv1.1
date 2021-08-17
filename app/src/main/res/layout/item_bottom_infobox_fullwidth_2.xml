@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <io.github.florent37.shapeofview.shapes.CutCornerView
+        android:id="@+id/ccv_box_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="@dimen/bottom_info_box_margin_horizontal"
+        android:elevation="4dp"
+        app:shape_cutCorner_topLeftSize="14dp"
+        app:shape_cutCorner_topRightSize="14dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cv_trytocut2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="@color/goodtogo_blue"
+            android:padding="20dp"
+            app:shapeAppearanceOverlay="@style/CornerCut">
+
+
+            <LinearLayout
+                android:id="@+id/ll_box_content2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                android:gravity="end"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView android:id="@+id/tv_box_number2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="8"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/tv_unitA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="箱 | "
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView android:id="@+id/tv_cup_number2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="190"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+                <TextView android:id="@+id/tv_unitB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="個"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/v_instock_expandable_info_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/ll_box_content2"
+                app:layout_constraintTop_toBottomOf="@id/ll_box_content2"
+                tools:visibility="visible">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/goodtogo_blue_variant" />
+
+                <TextView
+                    android:id="@+id/tv_instock_box_detail2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="12oz glasses x15\nBig x 1016\nSmall x 562"
+                    android:visibility="visible" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </io.github.florent37.shapeofview.shapes.CutCornerView>
+</LinearLayout>
