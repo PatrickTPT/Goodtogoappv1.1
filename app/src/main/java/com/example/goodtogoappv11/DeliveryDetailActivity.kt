@@ -50,7 +50,7 @@ class DeliveryDetailActivity : AppCompatActivity() {
             //deliverThisBox(tv_select_destination.text.toString(),tv_select_deliveryDate.text.toString())
             setResult(android.app.Activity.RESULT_OK)
             finish()
-            Toast.makeText(this,"安排出貨至：好盒器基地", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"安排出貨至：${tv_select_destination.text}", Toast.LENGTH_SHORT).show()
 
         }
 

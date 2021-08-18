@@ -32,6 +32,7 @@
 
     <!-- 容器功能 -->
     <string name="sign_for_store">代簽收</string>
+    <string name="cancel_arrival">取消送達</string>
     <string name="cancel_delivery">取消配送</string>
     <string name="edit_delivery">修改</string>
     <string name="cancel_boxing">解除裝箱</string>
@@ -53,4 +54,5 @@
     
     <!-- 頁面訊息 -->
     <string name="no_box_inside">目前沒有箱子</string>
+
 </resources>

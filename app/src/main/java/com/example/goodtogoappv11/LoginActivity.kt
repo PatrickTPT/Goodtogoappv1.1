@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.util.Base64.encodeToString
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -283,13 +284,7 @@ class LoginActivity : BaseActivity() {
             val d = Date()
             d.time = d.time + 259200
 
-            //not working
-            //var decodedKey: ByteArray = Base64.getDecoder().decode(Constants.SECRET_KEY_CURRENT)
-            //val originalKey : SecretKey = SecretKeySpec(decodedKey,0,decodedKey.size,"AES")
-            //not working 2
-            //var encodedKey :ByteArray = android.util.Base64.decode(Constants.SECRET_KEY_CURRENT, android.util.Base64.DEFAULT)
-            //val originalKey: SecretKey = SecretKeySpec(encodedKey,0,encodedKey.size,"")
-            //
+
 
 
 
@@ -309,8 +304,7 @@ class LoginActivity : BaseActivity() {
             //var key : Key = SecretKeySpec(Constants.SECRET_KEY_CURRENT.toByteArray(),SignatureAlgorithm.HS256.getJcaName())
             val claims : Claims = Jwts.claims()
 
-        val base64Encoded = android.util.Base64
-            .encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
+        val base64Encoded = Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray())
 
             return Jwts.builder()
                 .setId(Constants.reqID())
@@ -319,6 +313,7 @@ class LoginActivity : BaseActivity() {
                 .setExpiration(d)
                 .signWith(SignatureAlgorithm.HS256,base64Encoded)
                 .compact()
+        return ""
         }
 
 

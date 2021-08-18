@@ -8,23 +8,24 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
-class EditBoxInStockResultActivity : AppCompatActivity() {
+class ResultOfRecycleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
         val history = findViewById<TextView>(R.id.history)
-        val testing =intent.getStringArrayListExtra("Test")
+        val testing = intent.getStringArrayListExtra("Test")
 
         val resultTitle = findViewById<TextView>(R.id.tv_success_title)
-        resultTitle.text = "修改裝箱完成"
+        resultTitle.text = "回收成功"
+
 
         history.text = "$testing"
-
+        val nextRecycle: Button = findViewById(R.id.nextRe_button)
+        nextRecycle.visibility = View.VISIBLE
 
         val confirmButton = findViewById<Button>(R.id.confirm_button)
-        val nextReButton : Button = findViewById(R.id.nextRe_button)
-        nextReButton.visibility = View.GONE
+
 
         confirmButton.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
@@ -33,7 +34,11 @@ class EditBoxInStockResultActivity : AppCompatActivity() {
         }
 
 
-
+        nextRecycle.setOnClickListener {
+            val intent = Intent(this, RecycleActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 

@@ -8,7 +8,7 @@ class EditBoxInStockActivity : BaseInputActivity(){
         setContentView(R.layout.activity_scan)
 
         val actionBar = supportActionBar
-        actionBar!!.title = "裝箱｜新增庫存"
+        actionBar!!.title = "庫存｜修改裝箱"
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         idInputSlot = findViewById(R.id.et_idInputSlot)
@@ -33,7 +33,7 @@ class EditBoxInStockActivity : BaseInputActivity(){
 
         //傳送資料功能宣告
         proceedFab.setOnClickListener {
-            inputCheck()
+            inputCheck(ResultOfEditBoxInStockActivity())
         }
 
 

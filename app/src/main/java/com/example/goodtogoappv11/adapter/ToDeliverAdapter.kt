@@ -42,6 +42,7 @@ class ToDeliverAdapter(
         val llWholeItem: LinearLayout = view.ll_whole_item
         val lltodeliver: LinearLayout? = view.ll_to_deliver
 //2
+        val cancelArrival: TextView = view.tv_cancel_arrival
         val cancelDelivery: TextView = view.tv_cancel_delivery
         val editDelivery: TextView = view.tv_edit_delivery
         val deliveryArrived: TextView = view.tv_delivery_arrived
@@ -57,6 +58,27 @@ class ToDeliverAdapter(
         //3
         init {
             view.setOnClickListener(this)
+
+            cancelArrival.setOnClickListener {
+                val builder = AlertDialog.Builder(context)
+                builder.setTitle("注意")
+                    .setMessage("要取消送達？")
+                    .setPositiveButton("確定"){
+                            dialog, _->
+                        items[absoluteAdapterPosition].status = BOX_STATUS_TODELIVER
+                        items[absoluteAdapterPosition].expandable = false
+                        notifyDataSetChanged()
+                        dialog.dismiss()
+
+                    }
+                    .setNeutralButton("取消"){
+                            dialog, _->
+                        dialog.dismiss()
+                    }
+                    .create()
+                    .show()
+            }
+
             cancelDelivery.setOnClickListener {
                 val editOptionList :Array<String> =arrayOf("送入庫存","解除裝箱")
                 val builder = AlertDialog.Builder(context)
@@ -66,7 +88,8 @@ class ToDeliverAdapter(
                             0 -> {items[absoluteAdapterPosition].status = BOX_STATUS_BOXED
                                 Toast.makeText(context,"# ${items[absoluteAdapterPosition].boxid} 已送回庫存",
                                     Toast.LENGTH_SHORT).show()
-                                    notifyDataSetChanged()
+                                items[absoluteAdapterPosition].expandable = false
+                                notifyDataSetChanged()
                             }
                             1 -> {val builder = AlertDialog.Builder(context)
                                 builder.setTitle("解除裝箱")
@@ -100,6 +123,7 @@ class ToDeliverAdapter(
                                 intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
                                 intent.putExtra("date","${items[absoluteAdapterPosition].date}")
                                 ContextCompat.startActivity(context, intent, null)
+                                items[absoluteAdapterPosition].expandable = false
                                 //TODO
                             }
                             1 -> {
@@ -117,8 +141,7 @@ class ToDeliverAdapter(
                     .setMessage("確認送達？")
                     .setPositiveButton("確定"){
                             dialog, _->
-                        items[absoluteAdapterPosition].status = Constants.BOX_STATUS_TOBESIGNED
-                        items[absoluteAdapterPosition].expandable = false
+                        items[absoluteAdapterPosition].status = BOX_STATUS_TOBESIGNED
                         notifyDataSetChanged()
                         dialog.dismiss()
 
@@ -206,7 +229,10 @@ class ToDeliverAdapter(
                     if(model.status == BOX_STATUS_TODELIVER ) View.VISIBLE else View.GONE
                 holder.waitToSign.visibility =
                     if(model.status == BOX_STATUS_TOBESIGNED) View.VISIBLE else View.GONE
-
+                holder.cancelArrival.visibility =
+                    if(model.status == BOX_STATUS_TOBESIGNED) View.VISIBLE else View.GONE
+                holder.cancelDelivery.visibility =
+                    if(model.status == BOX_STATUS_TODELIVER ) View.VISIBLE else View.GONE
 
 
             }

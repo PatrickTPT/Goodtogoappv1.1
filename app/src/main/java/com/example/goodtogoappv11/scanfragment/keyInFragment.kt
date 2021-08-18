@@ -76,7 +76,7 @@ class keyInFragment : Fragment() {
 
             if(inputList.size > 0){
 
-                val intent = Intent(this, ResultActivity::class.java)
+                val intent = Intent(this, ResultOfRecycleActivity::class.java)
                 intent.putStringArrayListExtra("Test",inputList)
                 startActivity(intent)
             } else {

@@ -33,6 +33,8 @@ fun main(){
     println(displayList)
     */
 
+    //val pos = mediumList.boxid.indexof(3124014)
+
     //var base64Key = BASE64.encode(Constants.SECRET_KEY_CURRENT.getEncoded())
     //val base64Encoded = Base64.getEncoder().encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray())
     //val hmacKey: ByteArray = Constants.SECRET_KEY_CURRENT.toByteArray(StandardCharsets.UTF_8)

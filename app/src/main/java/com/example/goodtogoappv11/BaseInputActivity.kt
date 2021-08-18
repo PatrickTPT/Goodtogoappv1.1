@@ -1,6 +1,7 @@
 package com.example.goodtogoappv11
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -235,9 +236,9 @@ open class BaseInputActivity : AppCompatActivity() {
 
     }
 
-    open fun inputCheck() {
+    open fun inputCheck(activity: Activity) {
         if (inputList.size > 0) {
-            val intent = Intent(this, ResultActivity::class.java)
+            val intent = Intent(this, activity::class.java)
             intent.putStringArrayListExtra("Test", inputList)
             startActivity(intent)
             finish()

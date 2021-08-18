@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodtogoappv11.DeliveryDetailActivity
@@ -81,8 +82,10 @@ class InStockAdapter (
                                     val intent = Intent(context,EditBoxInStockActivity::class.java)
                                     intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
                                     intent.putExtra("date","The boxing date")
+                                    items[absoluteAdapterPosition].expandable = false
+
                                     //TODO: put Array of container List in the Extra( using serializable)
-                                    startActivity(context,intent,null)
+                                    ContextCompat.startActivity(context,intent,null)
                                 }
                             }
                         }
@@ -95,8 +98,11 @@ class InStockAdapter (
                 val intent = Intent(context,DeliveryDetailActivity::class.java)
                 intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
                 intent.putExtra("position",absoluteAdapterPosition)
+                items[absoluteAdapterPosition].expandable = false
+
                 //Toast.makeText(context,"position: $absoluteAdapterPosition",Toast.LENGTH_SHORT).show()
                 startActivity(context,intent,null)
+                notifyDataSetChanged()
             }
         }
 
@@ -164,7 +170,16 @@ class InStockAdapter (
 
             }
             is TagViewHolder -> {
-                holder.label?.text = SimpleDateFormat("yyyy-MM-dd (E)", Locale.TAIWAN).format(model.date).toString()
+                //TODO: try to add a tagtype in somewhere
+                val tagType : type? = null
+                if(tagType == type.DATE) {
+                    holder.label?.text =
+                        SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN).format(model.date).toString()
+                } else {
+                    holder.label?.text =
+                        model.cupType.toString()
+                }
+
             }
         }
 
@@ -200,7 +215,9 @@ class InStockAdapter (
     }
 
 
-
+    enum class type {
+        DATE, CUPTYPE
+    }
 
     }
 

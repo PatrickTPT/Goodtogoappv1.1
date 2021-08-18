@@ -1,6 +1,5 @@
 package com.example.goodtogoappv11
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 
-class EditBoxToDeliverResultActivity : AppCompatActivity() {
+class ResultOfEditBoxInStockActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
@@ -17,7 +16,7 @@ class EditBoxToDeliverResultActivity : AppCompatActivity() {
         val testing =intent.getStringArrayListExtra("Test")
 
         val resultTitle = findViewById<TextView>(R.id.tv_success_title)
-        resultTitle.text = "修改裝箱完成"
+        resultTitle.text = "修改裝箱完成｜庫存"
 
         history.text = "$testing"
 
@@ -27,8 +26,7 @@ class EditBoxToDeliverResultActivity : AppCompatActivity() {
         nextReButton.visibility = View.GONE
 
         confirmButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+
             finish()
         }
 

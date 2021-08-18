@@ -53,7 +53,7 @@ class RecycleActivity : BaseInputActivity() {
 
         //傳送資料功能宣告
         proceedFab.setOnClickListener {
-            inputCheck()
+            inputCheck(ResultOfRecycleActivity())
 
             //設定讀取fragment(暫緩）
             //val keyInFragment = keyInFragment()
