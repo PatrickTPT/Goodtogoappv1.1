@@ -46,7 +46,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_baseline_filter_grey_24"/>
+                    android:src="@drawable/ic_filter_grey_24"/>
 
                 <TextView
                     android:id="@+id/tv_filter"

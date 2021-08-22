@@ -1,11 +1,12 @@
 package com.example.goodtogoappv11.network
 
 import com.example.goodtogoappv11.model.UriResponse
+import org.json.JSONObject
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface ourService {
 
@@ -13,8 +14,7 @@ interface ourService {
     fun postLogin(
         @Header("reqID") reqId: String,
         @Header("reqTime") reqTime: String,
-        @Query("phone") phone: String,
-        @Query("password") password: String?
+        @Body() body: JSONObject
         ): Call<LoginResponse>
 
     @POST("users/logout")
@@ -28,6 +28,12 @@ interface ourService {
         @Header("Authorization")Authorization: String,
         @Header("ApiKey") ApiKey: String
     ): Call<UriResponse>
+
+    @GET("containers/get/list")
+    fun containersGetList(
+        @Header("reqId")reqId: String,
+        @Header("reqTime")reqTime: String
+    ) :Call<ContainerGetListResponse>
 
 
     @GET("posts/1")

@@ -12,8 +12,10 @@
 
 
     <string name="station_name">好盒器台南調度站</string>
-    <string name="instock_string">庫存</string>
-    <string name="deliver_string">配送</string>
+    <string name="in_stock_page">庫存</string>
+    <string name="to_deliver_page">待配送</string>
+    <string name="delivery_history_page">出貨紀錄</string>
+    <string name="to_sign_for_page">待簽收入庫</string>
 
     <!-- -->
     <string name="affirmation1">I am strong.</string>
@@ -55,4 +57,12 @@
     <!-- 頁面訊息 -->
     <string name="no_box_inside">目前沒有箱子</string>
 
+    <!-- some variables-->
+    <string name="number_with_hashtag"># %1$d</string>
+    <string name="number_with_hashtag_in_string"># %1$s</string>
+
+    <!---->
+    <string name="finish_edit_box">修改裝箱完成｜%1$s</string>
+    <string name="finish_boxing_in_stock">裝箱完成</string>
+    <string name="test_name">%1$s</string>
 </resources>

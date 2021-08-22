@@ -17,35 +17,36 @@ class Boxes {
     data class BoxChild (
         val cupType: String,
         val cupId: Int,
-        var cupStatus: Int
+        var cupStatus: Int,
+        val viewType: Int
     )
 
 
     //child data generator
     var boxChildList001 = mutableListOf<BoxChild>(
-        BoxChild("大器杯", 30001,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30002,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30003,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30004,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30005,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30006,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30007,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30008,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30009,BOX_STATUS_BOXED),
-        BoxChild("大器杯", 30010,BOX_STATUS_BOXED),
+        BoxChild("大器杯", 30001,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30002,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30003,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30004,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30005,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30006,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30007,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30008,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30009,BOX_STATUS_BOXED,1),
+        BoxChild("大器杯", 30010,BOX_STATUS_BOXED,1)
     )
 
     var boxChildList002 = mutableListOf<BoxChild>(
-        BoxChild("小器杯", 30011,BOX_STATUS_BOXED),
-        BoxChild("小器杯", 30012,BOX_STATUS_BOXED),
-        BoxChild("小器杯", 30013,BOX_STATUS_BOXED),
-        BoxChild("小器杯", 30014,BOX_STATUS_BOXED),
-        BoxChild("小器杯", 30015,BOX_STATUS_BOXED),
-        BoxChild("豪器杯", 30016,BOX_STATUS_BOXED),
-        BoxChild("豪器杯", 30017,BOX_STATUS_BOXED),
-        BoxChild("豪器杯", 30018,BOX_STATUS_BOXED),
-        BoxChild("豪器杯", 30019,BOX_STATUS_BOXED),
-        BoxChild("豪器杯", 30020,BOX_STATUS_BOXED),
+        BoxChild("小器杯", 30011,BOX_STATUS_BOXED,1),
+        BoxChild("小器杯", 30012,BOX_STATUS_BOXED,1),
+        BoxChild("小器杯", 30013,BOX_STATUS_BOXED,1),
+        BoxChild("小器杯", 30014,BOX_STATUS_BOXED,1),
+        BoxChild("小器杯", 30015,BOX_STATUS_BOXED,1),
+        BoxChild("豪器杯", 30016,BOX_STATUS_BOXED,1),
+        BoxChild("豪器杯", 30017,BOX_STATUS_BOXED,1),
+        BoxChild("豪器杯", 30018,BOX_STATUS_BOXED,1),
+        BoxChild("豪器杯", 30019,BOX_STATUS_BOXED,1),
+        BoxChild("豪器杯", 30020,BOX_STATUS_BOXED,1),
     )
 
     var boxA = mutableListOf<BoxLong>(

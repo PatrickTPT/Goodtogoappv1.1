@@ -75,7 +75,6 @@ class InStockActivity : BaseActivity(), OnAClickListener {
             builder.create().show()
         }
 
-
         tv_filter_not.setOnClickListener(){
             if (filterChoice != FILTER_NOT) {
                 ll_filter_not.setBackgroundResource(R.drawable.layout_filter_bg)
@@ -143,6 +142,12 @@ class InStockActivity : BaseActivity(), OnAClickListener {
 
 
         }
+
+    override fun onRestart() {
+        displayList.clear()
+        displayList.addAll(mediumList.filter{it.status == Constants.BOX_STATUS_BOXED})
+        super.onRestart()
+    }
 
     private fun setupBottomInformationBox() {
         tv_box_number.text = displayList.size.toString()

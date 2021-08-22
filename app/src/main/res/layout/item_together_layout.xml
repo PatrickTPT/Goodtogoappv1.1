@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="20dp"
                     android:text="@string/long_text_example"
-
+                    android:textColor="@color/mediumGrey"
                     android:textSize="12sp" />
 
                 <View

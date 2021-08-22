@@ -40,6 +40,9 @@ class EditBoxInStockActivity : BaseInputActivity(){
 
 
 
+    }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

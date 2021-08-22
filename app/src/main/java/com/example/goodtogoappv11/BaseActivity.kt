@@ -55,7 +55,7 @@ open class BaseActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.title = titleText
         }
-        // TODO: (NTH) add BackPressed listener to finish() current Activity
+        // TODO: (NiceToHave) add BackPressed listener to finish() current Activity
     }
 
     open fun setupFullActionBar(titleText: String){
@@ -64,7 +64,7 @@ open class BaseActivity : AppCompatActivity() {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.title = titleText
         }
-        // TODO: (NTH) add BackPressed listener to finish() current Activity
+        // TODO: (NiceToHave) add BackPressed listener to finish() current Activity
     }
 
     /*open fun setupIntegratedRecyclerView(
@@ -144,14 +144,14 @@ open class BaseActivity : AppCompatActivity() {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this,
-                    R.color.snackbar_valid_color
+                    R.color.colorVerified
                 )
             )
         } else {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this,
-                    R.color.snackbar_error_color
+                    R.color.colorUnverified
                 )
             )
         }
@@ -194,8 +194,8 @@ open class BaseActivity : AppCompatActivity() {
 
 
     fun sortByCupType(){
-        displayList.sortWith(compareBy<Box>{ it.cupType }.thenBy
-        {it.date})
+        displayList.sortWith(nullsFirst(compareBy<Box>{ it.cupType }.thenBy
+        {it.date}))
         sortType = InStockActivity.SORT_TYPE_CUP
         adapter.notifyDataSetChanged()
     }

@@ -126,7 +126,7 @@ class Datasource {
 
         for (i in 1..10) {
             arrayList.add(
-                Boxes.BoxChild("大器杯", initValue + i, Constants.BOX_STATUS_BOXED))
+                Boxes.BoxChild("大器杯", initValue + i, Constants.BOX_STATUS_BOXED,VIEW_TYPE_ONE))
         }
 
         return arrayList

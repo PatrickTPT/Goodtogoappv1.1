@@ -25,7 +25,8 @@
     <color name="goodtogo_yellow_variant">#FFD607</color>
     <color name="goodtogo_red">#FF4081</color>
     <color name="goodtogo_darker_yellow">#E4C600</color>
-    <color name = "snackbar_error_color">#F72400</color>
-    <color name = "snackbar_valid_color">#4AF700</color>
+    <color name="colorUnverified">#F72400</color>
+    <color name="colorVerified">#4AF700</color>
+
 
 </resources>

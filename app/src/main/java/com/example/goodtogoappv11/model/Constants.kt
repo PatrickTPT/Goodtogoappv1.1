@@ -33,7 +33,7 @@ object Constants {
     const val MY_PHONE: String = "0963328359"
     const val MY_PASSWORD: String = ""
 
-    val reqTime: String = Date().toString()
+    val reqTime: String = Date().time.toString()
     fun reqID(): String {
         val hex: Array<Char> =
             arrayOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F')
@@ -80,4 +80,5 @@ object Constants {
     val marrayList = Datasource().loadBoxes()
     var mediumList: MutableList<Box> = marrayList
     var randomCupNumberStand = 30020
+    var latestBoxId = 3018001
 }

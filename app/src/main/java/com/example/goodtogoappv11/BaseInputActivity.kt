@@ -2,7 +2,6 @@ package com.example.goodtogoappv11
 
 import android.Manifest
 import android.app.Activity
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.view.Gravity
@@ -14,11 +13,19 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.budiyev.android.codescanner.*
+import com.example.goodtogoappv11.model.Box
+import com.example.goodtogoappv11.model.Boxes
+import com.example.goodtogoappv11.model.Constants
+import com.example.goodtogoappv11.model.Constants.BOX_STATUS_BOXED
+import com.example.goodtogoappv11.model.Constants.VIEW_TYPE_ONE
+import com.example.goodtogoappv11.model.Constants.latestBoxId
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_scan.*
 import kotlinx.android.synthetic.main.item_bottom_infobox.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -33,6 +40,9 @@ open class BaseInputActivity : AppCompatActivity() {
     lateinit var tv_scanWord: TextView
     lateinit var clearBtn: Button
     lateinit var proceedFab: FloatingActionButton
+    var childList: ArrayList<Boxes.BoxChild> = ArrayList()
+    var cupTypeList: ArrayList<String> = ArrayList()
+    open lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
 
 
     //val scannerView = findViewById<CodeScannerView>(com.budiyev.android.codescanner.R.id.scanner_View)
@@ -209,6 +219,25 @@ open class BaseInputActivity : AppCompatActivity() {
         super.onPause()
     }
 
+    override fun onBackPressed() {
+        if(childList.size >0 || idInputSlot.text.toString().isNotEmpty()) {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Notice")
+                .setMessage("操作到一半，確認要離開？")
+                .setNeutralButton("離開") { dialog, _ ->
+                    dialog.dismiss()
+                    super.onBackPressed()
+                }
+                .setPositiveButton("留下來") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .create()
+                .show()
+        } else {
+            super.onBackPressed()
+        }
+    }
+
     fun showSnackbar(message: String, channel: Boolean=true) {
         val snackBar = Snackbar.make(findViewById(android.R.id.content),
             message, Snackbar.LENGTH_SHORT)
@@ -220,14 +249,14 @@ open class BaseInputActivity : AppCompatActivity() {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this,
-                    R.color.snackbar_valid_color
+                    R.color.colorVerified
                 )
             )
         } else {
             snackBarView.setBackgroundColor(
                 ContextCompat.getColor(
                     this,
-                    R.color.snackbar_error_color
+                    R.color.colorUnverified
                 )
             )
         }
@@ -236,19 +265,7 @@ open class BaseInputActivity : AppCompatActivity() {
 
     }
 
-    open fun inputCheck(activity: Activity) {
-        if (inputList.size > 0) {
-            val intent = Intent(this, activity::class.java)
-            intent.putStringArrayListExtra("Test", inputList)
-            startActivity(intent)
-            finish()
-        } else {
-            quickToast("無已登錄容器")
-        }
-        //TODO: identify different HTTP request in different page(with identified function)
-        //TODO: alertDialog for unauthenticated container
-        //TODO: add progressdialog at the proper places
-    }
+    fun inputCheck(activity: Activity) {}
 
 
     fun quickToast(message: String, duration: Int = Toast.LENGTH_SHORT){
@@ -270,39 +287,94 @@ open class BaseInputActivity : AppCompatActivity() {
             idInputSlot.text.toString().isEmpty()
         ) {
             quickToast("請輸入號碼!")
-        } else {
+        } else  {
             inputList.add(idInputSlot.text.toString())
+            childList.add(createChild(idInputSlot.text.toString()))
+            //cupTypeList.add("${childList{it.cupType}}")
+
             idInputSlot.text.clear()
-            tv_box_count.text = inputList.size.toString() //要記的是list的資料筆數
-            println("資料增加，總筆數: ${inputList.size}")
+            tv_box_count.text = childList.size.toString() //要記的是list的資料筆數
+            println("資料增加，總筆數: ${childList.size}")
             tv_box_count.visibility = View.VISIBLE
             tv_scanWord.text = "已登錄容器"
-            showSnackbar("我假裝驗證成功")
+            showSnackbar("假裝驗證成功")
 
 
         }
     }
 
+    fun createChild(cupid: String): Boxes.BoxChild{
+        return Boxes.BoxChild("大器杯", cupid.toInt() ,
+            Constants.BOX_STATUS_READYTOCLEAN, Constants.VIEW_TYPE_ONE)
+    }
+
+
+
     fun infoboxDisplay(){
         when {
-            inputList.size == 1 -> {
+            childList.size == 1 -> {
                 tv_scanWord.text = "尚未掃瞄任何容器"
                 tv_box_count.visibility = View.GONE
                 inputList.removeAt(0)
 
             }
-            inputList.size > 1 -> {
+            childList.size > 1 -> {
                 inputList.removeAt(0)
             }
-            inputList.size == 0 -> {
+            childList.size == 0 -> {
                 tv_scanWord.text = "尚未掃瞄任何容器"
                 tv_box_count.visibility = View.GONE
                 quickToast("沒有可清除的資料喔!")
             }
         }
-        println("資料減少，總筆數: ${inputList.size}")
-        tv_box_count.text = inputList.size.toString()
+        println("資料減少，總筆數: ${childList.size}")
+        tv_box_count.text = childList.size.toString()
     }
+
+
+    fun createBox(arrayChlidList: ArrayList<Boxes.BoxChild>):Box {
+        val now = Date()
+        val milliNow = now.time
+
+        val calend = Calendar.getInstance(Locale.TAIWAN)
+        calend.time = now
+        /*val year:Int = calend.get(Calendar.YEAR)
+        val month:Int = calend.get(Calendar.MONTH+1)
+        val day:Int = calend.get(Calendar.DAY_OF_MONTH)*/
+        //var newboxid: Int=123
+        val year = SimpleDateFormat("yy", Locale.TAIWAN).format(now).toInt()
+        val month = SimpleDateFormat("MM",Locale.TAIWAN).format(now).toInt()
+        val day = SimpleDateFormat("dd",Locale.TAIWAN).format(now)
+        //newboxid = (year+3+month)*100000 + day*1000
+
+
+        var newboxid = latestBoxId+1
+        latestBoxId+=1
+
+
+
+        return Box(
+            null,
+            null,
+            newboxid,
+            "0963328359",
+            milliNow,
+            BOX_STATUS_BOXED,
+            arrayChlidList,
+            null,
+            childList.size,
+            VIEW_TYPE_ONE
+        )
+
+        latestBoxId += 1
+
+        /*TODO:
+           cupType check(also array),
+            */
+
+    }
+
+
 
 }
 

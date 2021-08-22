@@ -36,8 +36,8 @@
         <io.github.florent37.shapeofview.shapes.CutCornerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:shape_cutCorner_topRightSize="14dp"
-            app:shape_cutCorner_topLeftSize="14dp">
+            app:shape_cutCorner_topRightSize="10dp"
+            app:shape_cutCorner_topLeftSize="10dp">
 
 
             <LinearLayout
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/goodtogo_blue"
+                android:background="@color/white"
                 android:padding="10dp"
                 android:elevation="4dp">
 
@@ -78,7 +78,7 @@
                             android:layout_weight="1"
                             android:gravity="bottom|right"
                             android:text="尚未掃瞄任何容器"
-                            android:textColor="@color/white"
+                            android:textColor="@color/darkGrey"
                             android:textSize="10sp" />
 
                         <TextView
@@ -88,7 +88,7 @@
                             android:layout_marginEnd="16dp"
 
                             android:text="1"
-                            android:textColor="@color/white"
+                            android:textColor="@color/black"
                             android:textSize="30sp"
                             android:visibility="gone"
                             tools:visibility="visible"/>
@@ -98,7 +98,7 @@
                         android:id="@+id/tv_box_info_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
+                        android:textColor="@color/darkGrey"
                         android:gravity="end"
                         android:layout_marginEnd="16dp"
                         android:visibility="gone"

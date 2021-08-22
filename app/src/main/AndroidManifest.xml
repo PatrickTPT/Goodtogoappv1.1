@@ -15,6 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goodtogoappv11.WithBar"
         android:name="androidx.multidex.MultiDexApplication">
+        <activity android:name=".ResultOfBoxingInStockActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Design.Light.NoActionBar"/>
         <activity android:name=".ResultOfEditBoxToDeliverActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Design.Light.NoActionBar"/>
