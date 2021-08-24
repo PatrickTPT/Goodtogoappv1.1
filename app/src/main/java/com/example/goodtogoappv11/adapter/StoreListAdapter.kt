@@ -42,7 +42,7 @@ class StoreListAdapter(
                 holder.info?.text = "ID: ${model.id} - ${model.type}"
             }
             is TagViewHolder -> {
-                holder.label?.text = model.type
+                holder.label?.text = model.type.toString()
                 if(holder.label?.text == "Movie") {
                     holder.lltest?.visibility = View.GONE
                 } else {

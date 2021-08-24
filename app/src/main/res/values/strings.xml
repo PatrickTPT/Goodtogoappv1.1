@@ -10,27 +10,18 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-
+    <!--Page Title-->
     <string name="station_name">好盒器台南調度站</string>
     <string name="in_stock_page">庫存</string>
     <string name="to_deliver_page">待配送</string>
     <string name="delivery_history_page">出貨紀錄</string>
     <string name="to_sign_for_page">待簽收入庫</string>
+    <string name="dispatch_history_page">調度紀錄</string>
+    <string name="recycle_page">回收</string>
+    <string name="recycle_history_page">回收紀錄</string>
 
-    <!-- -->
-    <string name="affirmation1">I am strong.</string>
-    <string name="affirmation2">I believe in myself.</string>
-    <string name="affirmation3">Each day is a new opportunity to grow and be a better version of myself.</string>
-    <string name="affirmation4">Every challenge in my life is an opportunity to learn from.</string>
-    <string name="affirmation5">I have so much to be grateful for.</string>
-    <string name="affirmation6">Good things are always coming into my life.</string>
-    <string name="affirmation7">New opportunities await me at every turn.</string>
-    <string name="affirmation8">I have the courage to follow my heart.</string>
-    <string name="affirmation9">Things will unfold at precisely the right time.</string>
-    <string name="affirmation10">I will be present in all the moments that this day brings.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="long_text_example">創建｜0963328359｜2021-01-25 15:32\n裝箱｜0963328359｜2021-01-25 15:32\n入庫｜0963328359｜2021-01-25 15:32</string>
+    <!--SubPage Title-->
+    <string name="choose_destination">選擇回收地點</string>
 
     <!-- 容器功能 -->
     <string name="sign_for_store">代簽收</string>
@@ -56,6 +47,8 @@
     
     <!-- 頁面訊息 -->
     <string name="no_box_inside">目前沒有箱子</string>
+    <string name="long_text_example">創建｜0963328359｜2021-01-25 15:32\n裝箱｜0963328359｜2021-01-25 15:32\n入庫｜0963328359｜2021-01-25 15:32</string>
+
 
     <!-- some variables-->
     <string name="number_with_hashtag"># %1$d</string>
@@ -65,4 +58,8 @@
     <string name="finish_edit_box">修改裝箱完成｜%1$s</string>
     <string name="finish_boxing_in_stock">裝箱完成</string>
     <string name="test_name">%1$s</string>
+
+    <!---->
+    <string name="input_hint_box_id_cup_id">箱子ID、容器ID…</string>
+    <string name="input_hint_cup_id">容器ID…</string>
 </resources>

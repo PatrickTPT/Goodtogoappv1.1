@@ -1,6 +1,5 @@
 package com.example.goodtogoappv11.network
 
-import com.example.goodtogoappv11.model.UriResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.Body
@@ -29,11 +28,29 @@ interface ourService {
         @Header("ApiKey") ApiKey: String
     ): Call<UriResponse>
 
+    //verified!
     @GET("containers/get/list")
     fun containersGetList(
         @Header("reqId")reqId: String,
         @Header("reqTime")reqTime: String
     ) :Call<ContainerGetListResponse>
+
+    //verified!
+    @GET("stores/list")
+    fun getStoreslist(
+        @Header("reqId")reqId: String,
+        @Header("reqTime")reqTime: String
+    ) :Call<StoresListResponse>
+
+
+    @GET("stores/boxToSign")
+    fun getBoxToSignList(
+        @Header("Authorization")Authorization: String,
+        @Header("ApiKey") ApiKey: String
+    ) :Call<BoxToSignListResponse>
+
+
+
 
 
     @GET("posts/1")
