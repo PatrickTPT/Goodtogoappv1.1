@@ -23,6 +23,10 @@
     <!--SubPage Title-->
     <string name="choose_destination">選擇回收地點</string>
 
+
+    <!--Dialog Title-->
+    <string name="dialog_title_sort">排序</string>
+
     <!-- 容器功能 -->
     <string name="sign_for_store">代簽收</string>
     <string name="cancel_arrival">取消送達</string>
@@ -62,4 +66,5 @@
     <!---->
     <string name="input_hint_box_id_cup_id">箱子ID、容器ID…</string>
     <string name="input_hint_cup_id">容器ID…</string>
+    <string name="input_hint_cup_id_store_name">容器ID、店舖名…</string>
 </resources>
