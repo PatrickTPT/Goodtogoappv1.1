@@ -10,34 +10,21 @@
     tools:context=".ToDeliverActivity">
 
 
-    <TextView
-        android:id="@+id/tv_noContainer4_2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="沒有容器在此頁喔！(4-2)"
-        android:visibility="gone"
-        tools:visibility="gone" />
-
-
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tb_recycle_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/transparent"
-        android:visibility="visible"
+        android:background="@color/white"
         app:tabGravity="fill"
-        app:tabIndicator="@color/colorAccent"
+        app:tabIndicatorColor="@color/colorAccent"
+        app:tabIndicatorAnimationMode="linear"
         app:tabMode="fixed" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_recycle_history"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
-
-
-
-
+        android:visibility="visible" />
 
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.goodtogoappv11.network
 
+import com.example.goodtogoappv11.network.reload.ReloadResponse
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.http.Body
@@ -13,7 +14,7 @@ interface ourService {
     fun postLogin(
         @Header("reqID") reqId: String,
         @Header("reqTime") reqTime: String,
-        @Body() body: JSONObject
+        @Body body: JSONObject
         ): Call<LoginResponse>
 
     @POST("users/logout")
@@ -48,6 +49,20 @@ interface ourService {
         @Header("Authorization")Authorization: String,
         @Header("ApiKey") ApiKey: String
     ) :Call<BoxToSignListResponse>
+
+    @GET("deliveryList/reloadHistory")
+    fun getReloadList(
+        @Header("Authorization") Authorization: String,
+        @Header("ApiKey") ApiKey: String
+    ) :Call<ReloadResponse>
+
+
+
+
+
+
+
+
 
 
 

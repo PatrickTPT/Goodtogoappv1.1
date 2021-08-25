@@ -1,4 +1,4 @@
-package com.example.goodtogoappv11.recycleHistoryFragment
+package com.example.goodtogoappv11.historyDispatchFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.goodtogoappv11.R
 
-class CleanRecycleFragment : Fragment() {
+
+class DispatchOutFragment : Fragment() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

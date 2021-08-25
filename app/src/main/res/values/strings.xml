@@ -48,7 +48,7 @@
     <string name="sort_delivery_date_descending">出貨日期↓(新到舊)</string>
     <string name="sort_delivery_date">出貨日期↑(舊到新)</string>
 
-    
+
     <!-- 頁面訊息 -->
     <string name="no_box_inside">目前沒有箱子</string>
     <string name="long_text_example">創建｜0963328359｜2021-01-25 15:32\n裝箱｜0963328359｜2021-01-25 15:32\n入庫｜0963328359｜2021-01-25 15:32</string>
@@ -67,4 +67,6 @@
     <string name="input_hint_box_id_cup_id">箱子ID、容器ID…</string>
     <string name="input_hint_cup_id">容器ID…</string>
     <string name="input_hint_cup_id_store_name">容器ID、店舖名…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

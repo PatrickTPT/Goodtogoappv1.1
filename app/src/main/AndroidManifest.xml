@@ -55,7 +55,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.goodtogoappv11.MainActivity" />
         </activity>
-        <activity android:name=".DispatchRecordActivity"
+        <activity android:name=".DispatchHistoryActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

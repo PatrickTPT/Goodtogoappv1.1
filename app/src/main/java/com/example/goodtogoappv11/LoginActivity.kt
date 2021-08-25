@@ -1,10 +1,9 @@
 package com.example.goodtogoappv11
 
 import android.Manifest
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.util.Base64
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -12,27 +11,27 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AlertDialog
 import com.example.goodtogoappv11.model.Constants
-import com.example.goodtogoappv11.model.UriResponse
+import com.example.goodtogoappv11.model.Constants.MY_APIKEY_STATION
+import com.example.goodtogoappv11.model.Constants.MY_PASSWORD
+import com.example.goodtogoappv11.model.Constants.MY_PHONE
+import com.example.goodtogoappv11.model.Tokens.standardAut
 import com.example.goodtogoappv11.network.*
+import com.example.goodtogoappv11.network.reload.ReloadResponse
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import io.jsonwebtoken.Claims
-import io.jsonwebtoken.Jwts
-import io.jsonwebtoken.SignatureAlgorithm
-import io.jsonwebtoken.io.Encoders.*
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.dialog_custom_progress.*
+import kotlinx.android.synthetic.main.layout_test_dialog.*
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.security.Key
 import java.util.*
-import javax.crypto.spec.SecretKeySpec
 
 class LoginActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,44 +43,47 @@ class LoginActivity : BaseActivity() {
         val et_password: EditText = findViewById(R.id.et_password)
         val et_name: EditText = findViewById(R.id.et_name)
 
-        var testTopic = "Container Get List Test"
-        btn_logout.text = String.format(getString(R.string.test_name),testTopic)
+
 
 
         btn_sign_in.setOnClickListener{
+            Log.i("Login", "login button clicked")
             if (
                 et_name.text.toString().isEmpty())  {
                     Toast.makeText(this, "輸入錯誤喔!",LENGTH_SHORT).show()
                 } else {
                     login(et_name.text.toString(),et_password.text.toString())
-                showProgressDialog("載入中...")
-
+                    showProgressDialog("載入中...")
 
 
                 }
 
             }
+
+
         val btnSignInShortcut: Button = findViewById(R.id.btnSignInPass)
-
         btnSignInShortcut.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
-
-            startActivity(intent)
-
+            startActivity(Intent(this, MainActivity::class.java))
             Log.i("QuickLogin","quick pass clicked")
         }
 
+
+        val testTopic = "DeliveryList - Reload history"
+        btn_logout.text = String.format(getString(R.string.test_name),testTopic)
         btn_logout.setOnClickListener{
             Log.i("Logout", "logout button clicked")
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Log Out")
-                .setMessage("R U Sure?")
+                .setMessage("確定？")
                 .setPositiveButton("Log out"){
                         dialog, _->
                     dialog.dismiss()
                     //logout(Constants.BASE_URL)
                     //challengetoken()
                     //containersGetList()
+                    //boxtosignGetList()
+                    //customDialog("test")
+                    reloaddGetList()
                 }
                 .setNegativeButton("Stay"){
                         dialog, _->
@@ -97,26 +99,7 @@ class LoginActivity : BaseActivity() {
 
 
 
-    fun dexterpermission(){
-        Dexter.withActivity(this).withPermissions(
-            Manifest.permission.CAMERA
-        )
-            .withListener(object: MultiplePermissionsListener{
-                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
-                    TODO("Not yet implemented")
-                }
-
-                override fun onPermissionRationaleShouldBeShown(
-                    permissions: MutableList<PermissionRequest>?,
-                    token: PermissionToken?,
-                ) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-    }
-
-    fun login(phoneInput:String, passwordInput: String?){
+    fun boxtosignGetList() {
         if(Constants.isNetworkAvailable(this)){
             Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
 
@@ -128,12 +111,72 @@ class LoginActivity : BaseActivity() {
             val service : ourService = retrofit
                 .create<ourService>(ourService::class.java)
 
-            var jsonObject = JSONObject()
-            jsonObject.put("phone",phoneInput)
-            jsonObject.put("password",passwordInput)
+
+            val listCall: Call<BoxToSignListResponse> = service.getBoxToSignList(
+                standardAut(), Constants.MY_APIKEY_STATION
+            )
+
+            listCall.enqueue(object : Callback<BoxToSignListResponse>{
+                override fun onResponse(
+                    call: Call<BoxToSignListResponse>,
+                    response: Response<BoxToSignListResponse>,
+                ) {
+                    if(response.isSuccessful){
+                        val list: BoxToSignListResponse? = response.body()
+                        Toast.makeText(this@LoginActivity,"${list.toString()}",Toast.LENGTH_SHORT).show()
+                        Log.i("Response Result","BoxToSignListResponse")
+
+
+
+
+                    } else {
+                        val rc = response.code()
+                        when(rc){
+                            400 -> {
+                                Log.e("Error 400", "Bad Connection")
+                            }
+                            404 -> {
+                                Log.e("Error 404", "Not found")
+                            }
+                            401 -> {
+                                Log.e("Error 401", "headers' problem")
+                            }
+                            else ->{
+                                Log.e("Error", response.message())
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<BoxToSignListResponse>, t: Throwable) {
+                    Log.e("Errorr", t!!.message.toString())
+                    Toast.makeText(this@LoginActivity,"${t.message.toString()}",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+        }
+    }
+
+
+    private fun login(phoneInput:String, passwordInput: String?){
+        if(Constants.isNetworkAvailable(this)){
+            Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
+
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val service : ourService = retrofit
+                .create<ourService>(ourService::class.java)
+
+            val jsonObject = JSONObject()
+            jsonObject.put("phone",MY_PHONE)
+            jsonObject.put("password", MY_PASSWORD)
 
             val listCall: Call<LoginResponse> = service.postLogin(
-                Constants.reqID(), Constants.reqTime,jsonObject
+                Constants.reqID(), Constants.reqTime, jsonObject
             )
 
             listCall.enqueue(object : Callback<LoginResponse>{
@@ -149,9 +192,7 @@ class LoginActivity : BaseActivity() {
                         //TODO: update secretKey and APIkey in Constants<object>
 
                         startActivity(intent)
-                        Handler().postDelayed({
-                            hideProgressDialog()
-                        }, 2000)
+                        hideProgressDialog()
                     } else {
                         val rc = response.code()
                         when(rc){
@@ -161,9 +202,9 @@ class LoginActivity : BaseActivity() {
                             404 -> {
                                 Log.e("Error 404", "Not found")
                             }
-                            401 -> {
-                                Log.e("Error 401", "headers' problem")
-                            }
+                            /*401 -> {
+                                Log.e("Error 401", response.message())
+                            }*/
                             else ->{
                                 Log.e("Error", response.message())
                             }
@@ -194,7 +235,7 @@ class LoginActivity : BaseActivity() {
                 .create<ourService>(ourService::class.java)
 
             val listCall: Call<LogoutResponse> = service.postLogout(
-                standardAut(), Constants.APIKEY_MY_ADMIN
+                standardAut(), Constants.MY_APIKEY_STATION
             )
 
             listCall.enqueue(object : Callback<LogoutResponse>{
@@ -247,7 +288,7 @@ class LoginActivity : BaseActivity() {
                 .create<ourService>(ourService::class.java)
 
             val listCall: Call<UriResponse> = service.getContainersChallengeToken(
-                standardAut(), Constants.APIKEY_MY_ADMIN
+                standardAut(), Constants.MY_APIKEY_STATION
             )
 
             listCall.enqueue(object : Callback<UriResponse>{
@@ -258,7 +299,7 @@ class LoginActivity : BaseActivity() {
                     if(response.isSuccessful){
                         val list: UriResponse? = response.body()
                         Toast.makeText(this@LoginActivity, list.toString(), LENGTH_SHORT).show()
-                        //Log.i("Response Result","$LogoutResponse")
+                        Log.i("Response Result","$list")
                     } else {
                         val rc = response.code()
                         when(rc){
@@ -289,7 +330,7 @@ class LoginActivity : BaseActivity() {
 
     }
 
-    /*private fun containersGetList() {
+    private fun containersGetList() {
         if(Constants.isNetworkAvailable(this)){
             Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
 
@@ -312,7 +353,7 @@ class LoginActivity : BaseActivity() {
                 ) {
                     if(response.isSuccessful){
                         val loginList: ContainerGetListResponse? = response.body()
-                        Toast.makeText(this@LoginActivity,"${loginList.toString()}",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity,"${loginList.toString()}",Toast.LENGTH_LONG).show()
                         //Log.i("Response Result","${ContainerGetListResponse()}")
                     } else {
                         val rc = response.code()
@@ -341,51 +382,94 @@ class LoginActivity : BaseActivity() {
             })
 
         }
-    }*/
+    }
 
-    private fun standardAut(): String {
+    private fun reloaddGetList() {
+        if(Constants.isNetworkAvailable(this)){
+            Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
 
-            val d = Date()
-            d.time = d.time + 259200
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
 
+            val service : ourService = retrofit
+                .create<ourService>(ourService::class.java)
 
+            /** Main Variables */
+            val listCall: Call<ReloadResponse> = service.getReloadList(
+                standardAut(), MY_APIKEY_STATION
+            )
 
+            listCall.enqueue(object : Callback<ReloadResponse>{
+                override fun onResponse(
+                    call: Call<ReloadResponse>,
+                    response: Response<ReloadResponse>,
+                ) {
+                    if(response.isSuccessful){
+                        val loginList: ReloadResponse? = response.body()
+                        Toast.makeText(this@LoginActivity,"${loginList.toString()}",Toast.LENGTH_LONG).show()
+                        //Log.i("Response Result","${ContainerGetListResponse()}")
 
+                    } else {
+                        val rc = response.code()
+                        when(rc){
+                            400 -> {
+                                Log.e("Error 400", "Bad Connection")
+                            }
+                            404 -> {
+                                Log.e("Error 404", "Not Found")
+                            }
+                            401 -> {
+                                Log.e("Error 401", "headers' problem")
+                            }
+                            else ->{
+                                Log.e("Error", response.message())
 
-        /*if (Build.VERSION.SDK_INT >= 26) {
-            base64Encoded = Base64.getEncoder().encode(Constants.SECRET_KEY_CURRENT.toByteArray()).toString();
-        } else {
-            base64Encoded = android.util.Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
+                            }
+                        }
+                        Log.i("Auth", "onResponse: ${standardAut()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<ReloadResponse>, t: Throwable) {
+                    Log.e("Errorr", t!!.message.toString())
+                    Toast.makeText(this@LoginActivity,t.message.toString(),Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
         }
-
-            //var base64Key = BASE64.encode(Constants.SECRET_KEY_CURRENT.getEncoded())
-            //val base64Encoded = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                Base64.getEncoder().encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray())
-            } else {
-
-            }*/
-
-            val claims : Claims = Jwts.claims()
-            /**proved by Ezou*/
-        val base64Encoded = Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
-
-        //val hmacKey: ByteArray = base64Encoded.toByteArray(StandardCharsets.UTF_8)
-        var key : Key = SecretKeySpec(base64Encoded.toByteArray(),SignatureAlgorithm.HS256.getJcaName())
+    }
 
 
 
-        return Jwts.builder()
-                .setId(Constants.reqID())
-                .setClaims(claims)
-                .setIssuedAt(Date())
-                .setExpiration(d)
-                .signWith(SignatureAlgorithm.NONE,base64Encoded)
-                .compact()
 
-        }
+    fun customDialog(text: String) {
+        val newBuilder = Dialog(this)
+        newBuilder.setContentView(R.layout.layout_test_dialog)
+        newBuilder.tv_dialog_test.text = text
+        newBuilder.show()
+    }
 
+    fun dexterpermission(){
+        Dexter.withActivity(this).withPermissions(
+            Manifest.permission.CAMERA
+        )
+            .withListener(object: MultiplePermissionsListener {
+                override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
+                    TODO("Not yet implemented")
+                }
 
+                override fun onPermissionRationaleShouldBeShown(
+                    permissions: MutableList<PermissionRequest>?,
+                    token: PermissionToken?,
+                ) {
+                    TODO("Not yet implemented")
+                }
 
+            })
+    }
 
     fun contest(){
         if(Constants.isNetworkAvailable(this)){

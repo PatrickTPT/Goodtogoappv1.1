@@ -3,7 +3,6 @@ package com.example.goodtogoappv11.network
 import android.os.Build
 import androidx.annotation.RequiresApi
 import com.example.goodtogoappv11.model.Constants
-import io.jsonwebtoken.Jwts
 import java.util.*
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
@@ -16,15 +15,16 @@ open class Authorization {
         d.time = d.time + 259200
 
 
-        var decodedKey: ByteArray = Base64.getDecoder().decode(Constants.SECRET_KEY_CURRENT)
+        var decodedKey: ByteArray = Base64.getDecoder().decode(Constants.MY_SECRET_KEY_STATION)
         val originalKey : SecretKey = SecretKeySpec(decodedKey,0,decodedKey.size,"AES")
 
-        return Jwts.builder()
+        /*return Jwts.builder()
             .setId(Constants.reqID())
             .setIssuedAt(Date())
             .setExpiration(d)
             .signWith(originalKey)
-            .compact()
+            .compact()*/
+        return ""
     }
 
     fun standardTime(){

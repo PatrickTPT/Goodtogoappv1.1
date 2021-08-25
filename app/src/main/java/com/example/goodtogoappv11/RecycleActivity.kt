@@ -54,7 +54,7 @@ class RecycleActivity : BaseInputActivity() {
         //傳送資料功能宣告
         proceedFab.setOnClickListener {
             inputCheck(ResultOfRecycleActivity())
-
+            //TODO:
             //設定讀取fragment(暫緩）
             //val keyInFragment = keyInFragment()
             //supportFragmentManager.beginTransaction().replace(R.id.fragment_container,keyInFragment).commit()

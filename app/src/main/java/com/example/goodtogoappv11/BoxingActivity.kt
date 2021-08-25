@@ -1,5 +1,6 @@
 package com.example.goodtogoappv11
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -25,7 +26,7 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
         if (stationName != null) {
             actionBar?.title = "裝箱｜${stationName}"
         } else {
-            actionBar?.title = "裝箱｜xxx調度站"
+            actionBar?.title = "裝箱｜調度站"
         }
         actionBar?.setDisplayHomeAsUpEnabled(true)
 
@@ -41,7 +42,7 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
         clearBtn = findViewById(R.id.btn_clear)
         proceedFab = findViewById(R.id.fab_proceed)
 
-        //TODO: set recyclerView of current box child
+
         setBottomBoxRecyclerView()
 
 
@@ -87,18 +88,27 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
     {
         val newBox = createBox(childList)
         mediumList.add(newBox)
-
+        //TODO: send request
+        // response ok -> next page
+              setResult(Activity.RESULT_OK)
         val intent = Intent(this, ResultOfBoxingInStockActivity::class.java)
         intent.putStringArrayListExtra("Test", inputList)
         intent.putExtra("NewBox",newBox.boxid)
         startActivity(intent)
         finish()
+
+
+        // TODO: response error -> alert dialog
+        // TODO: make bad cup visible
+
+
+
+
     } else
     {
         quickToast("無已登錄容器")
     }
-    //TODO: identify different HTTP request in different page(with identified function)
-    //TODO: alertDialog for unauthenticated container
+
     //TODO: add progressdialog at the proper places
 }
 

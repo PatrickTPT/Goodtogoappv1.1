@@ -56,17 +56,17 @@ class Datasource {
 
     fun loadStores(): ArrayList<Store> {
         return arrayListOf(
-            Store(null,null,"Movie", VIEW_TYPE_TWO),
-            Store("Fast & Furious 9", 121, "Movie",VIEW_TYPE_ONE),
-            Store("Black Widow", 721, "Movie", VIEW_TYPE_ONE),
-            Store(null,null,"Series",VIEW_TYPE_TWO),
-            Store("ZOO", 421, "Series",VIEW_TYPE_ONE),
-            Store("Vincenzo",384,"Series",VIEW_TYPE_ONE),
-            Store(null,null,"Anime",VIEW_TYPE_TWO),
-            Store("Attack on Titan",843,"Anime",VIEW_TYPE_ONE),
-            Store("Ghost in the shell", 871, "Anime",VIEW_TYPE_ONE),
-            Store(null,null,"book",VIEW_TYPE_TWO),
-            Store("PICKINUP MAN",433,"book",VIEW_TYPE_ONE)
+            Store(null,null,1, VIEW_TYPE_TWO),
+            Store("Fast & Furious 9", 121, 1,VIEW_TYPE_ONE),
+            Store("Black Widow", 721, 1, VIEW_TYPE_ONE),
+            Store(null,null,1,VIEW_TYPE_TWO),
+            Store("ZOO", 421, 1,VIEW_TYPE_ONE),
+            Store("Vincenzo",384,0,VIEW_TYPE_ONE),
+            Store(null,null,0,VIEW_TYPE_TWO),
+            Store("Attack on Titan",843,0,VIEW_TYPE_ONE),
+            Store("Ghost in the shell", 871, 0,VIEW_TYPE_ONE),
+            Store(null,null,1,VIEW_TYPE_TWO),
+            Store("PICKINUP MAN",433,1,VIEW_TYPE_ONE)
 
         )
     }

@@ -10,7 +10,7 @@
     <dimen name="bottom_info_box_margin_horizontal">10dp</dimen>
 
     <!-- Store List (for recycler view)-->
-    <dimen name="textSize_store_name">18sp</dimen>
+    <dimen name="textSize_store_name">16sp</dimen>
     <dimen name="textSize_store_info">12sp</dimen>
     <dimen name="margin_H_store_divider">6dp</dimen>
 

@@ -203,10 +203,11 @@
                 android:layout_height="1dp"
                 android:background="@color/mediumGrey"
                 android:layout_marginHorizontal="20dp"
+                android:visibility="gone"
                 />
 
             <TextView
-                android:id="@+id/recycleRecordBtn"
+                android:id="@+id/recycleHistoryBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/item_list_padding_main"

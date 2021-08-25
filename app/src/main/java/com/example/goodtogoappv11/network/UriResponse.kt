@@ -1,4 +1,4 @@
-package com.example.goodtogoappv11.model
+package com.example.goodtogoappv11.network
 
 import java.io.Serializable
 

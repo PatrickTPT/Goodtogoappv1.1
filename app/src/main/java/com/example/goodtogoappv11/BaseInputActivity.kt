@@ -335,7 +335,6 @@ open class BaseInputActivity : AppCompatActivity() {
     fun createBox(arrayChlidList: ArrayList<Boxes.BoxChild>):Box {
         val now = Date()
         val milliNow = now.time
-
         val calend = Calendar.getInstance(Locale.TAIWAN)
         calend.time = now
         /*val year:Int = calend.get(Calendar.YEAR)
@@ -350,7 +349,7 @@ open class BaseInputActivity : AppCompatActivity() {
 
         var newboxid = latestBoxId+1
         latestBoxId+=1
-
+        //TODO: get box id from http
 
 
         return Box(
