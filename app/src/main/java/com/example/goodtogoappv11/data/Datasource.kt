@@ -56,17 +56,17 @@ class Datasource {
 
     fun loadStores(): ArrayList<Store> {
         return arrayListOf(
-            Store(null,null,"Movie", VIEW_TYPE_TWO),
-            Store("Fast & Furious 9", 121, "Movie",VIEW_TYPE_ONE),
-            Store("Black Widow", 721, "Movie", VIEW_TYPE_ONE),
-            Store(null,null,"Series",VIEW_TYPE_TWO),
-            Store("ZOO", 421, "Series",VIEW_TYPE_ONE),
-            Store("Vincenzo",384,"Series",VIEW_TYPE_ONE),
-            Store(null,null,"Anime",VIEW_TYPE_TWO),
-            Store("Attack on Titan",843,"Anime",VIEW_TYPE_ONE),
-            Store("Ghost in the shell", 871, "Anime",VIEW_TYPE_ONE),
-            Store(null,null,"book",VIEW_TYPE_TWO),
-            Store("PICKINUP MAN",433,"book",VIEW_TYPE_ONE)
+            Store(null,null,1, VIEW_TYPE_TWO),
+            Store("Fast & Furious 9", 121, 1,VIEW_TYPE_ONE),
+            Store("Black Widow", 721, 1, VIEW_TYPE_ONE),
+            Store(null,null,1,VIEW_TYPE_TWO),
+            Store("ZOO", 421, 1,VIEW_TYPE_ONE),
+            Store("Vincenzo",384,0,VIEW_TYPE_ONE),
+            Store(null,null,0,VIEW_TYPE_TWO),
+            Store("Attack on Titan",843,0,VIEW_TYPE_ONE),
+            Store("Ghost in the shell", 871, 0,VIEW_TYPE_ONE),
+            Store(null,null,1,VIEW_TYPE_TWO),
+            Store("PICKINUP MAN",433,1,VIEW_TYPE_ONE)
 
         )
     }
@@ -75,21 +75,21 @@ class Datasource {
         return mutableListOf(
 
             Box(12,"方糖咖啡(府連店)",3124014,"0963328359",
-                1629047793643,BOX_STATUS_TODELIVER,null,"Grande",10,VIEW_TYPE_ONE),
+                1629047793643,BOX_STATUS_TODELIVER,boxChildList001,"Grande",10,VIEW_TYPE_ONE),
             Box(328,"hecho 做咖啡一店", 3122008,"0911789727",
-                1629047793643,BOX_STATUS_BOXED,null,"Venti", 10,VIEW_TYPE_ONE),
+                1629047793643,BOX_STATUS_BOXED,boxChildList002,"Venti", 10,VIEW_TYPE_ONE),
             Box(304,"白巷子府前店" ,3122017,"0963328359",
-                1629047793643,BOX_STATUS_BOXED,null,"Venti", 10,VIEW_TYPE_ONE),
+                1629047793643,BOX_STATUS_BOXED,boxChildList001,"Venti", 10,VIEW_TYPE_ONE),
             Box(12, "方糖咖啡(府連店)",3101036,"0911789727",
-                461865600000, BOX_STATUS_TOBEUSED,null,"Tall",50,VIEW_TYPE_ONE),
+                461865600000, BOX_STATUS_TOBEUSED,boxChildList002,"Tall",50,VIEW_TYPE_ONE),
             Box(304,"白巷子府前店" ,3102009,"0963328359",
-                461865600000,BOX_STATUS_TODELIVER,null,"Grande",50,VIEW_TYPE_ONE),
+                461865600000,BOX_STATUS_TODELIVER,boxChildList001,"Grande",50,VIEW_TYPE_ONE),
             Box(41,"雲平咖啡",3121333,"0911789727",
-                1604035600000,BOX_STATUS_BOXED,null,"Grande", 50,VIEW_TYPE_ONE),
+                1604035600000,BOX_STATUS_BOXED,boxChildList002,"Grande", 50,VIEW_TYPE_ONE),
             Box(328,"hecho 做咖啡一店",3123415,"0963328359",
-                1604035600000,BOX_STATUS_INUSE,null,"Tall",10, VIEW_TYPE_ONE),
+                1604035600000,BOX_STATUS_INUSE,boxChildList001,"Tall",10, VIEW_TYPE_ONE),
             Box(12,"方糖咖啡(府連店)",3123416,"0963328359",
-                1604035600000,BOX_STATUS_TODELIVER,null,"Tall",10, VIEW_TYPE_ONE)
+                1604035600000,BOX_STATUS_TODELIVER,boxChildList002,"Tall",10, VIEW_TYPE_ONE)
         )
     }
 
@@ -132,6 +132,32 @@ class Datasource {
         return arrayList
 
     }
+
+    var boxChildList001 = mutableListOf<Boxes.BoxChild>(
+        Boxes.BoxChild("大器杯", 30001, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30002, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30003, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30004, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30005, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30006, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30007, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30008, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30009, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("大器杯", 30010, BOX_STATUS_BOXED, 1)
+    )
+
+    var boxChildList002 = mutableListOf<Boxes.BoxChild>(
+        Boxes.BoxChild("小器杯", 30011, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("小器杯", 30012, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("小器杯", 30013, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("小器杯", 30014, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("小器杯", 30015, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("豪器杯", 30016, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("豪器杯", 30017, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("豪器杯", 30018, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("豪器杯", 30019, BOX_STATUS_BOXED, 1),
+        Boxes.BoxChild("豪器杯", 30020, BOX_STATUS_BOXED, 1),
+    )
 }
 
 

@@ -1,13 +1,13 @@
 package com.example.goodtogoappv11
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
+import androidx.collection.ArraySet
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.ToDeliverAdapter
@@ -15,6 +15,7 @@ import com.example.goodtogoappv11.data.Datasource
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.mediumList
 import kotlinx.android.synthetic.main.activity_to_deliver.*
+import kotlinx.android.synthetic.main.item_bottom_infobox_fullwidth_2.*
 import kotlinx.android.synthetic.main.item_sort.*
 import java.util.*
 
@@ -28,14 +29,17 @@ class ToDeliverActivity : BaseActivity(), OnAClickListener {
         setupLightWeightActionBar()
         tv_sort_title.text = "出貨日期↓(新到舊)"
 
+        //ll_bottom_sheet_fullwidth2
 
         displayList.clear()
+        //displayList.addAll(mediumList)
         displayList.addAll(mediumList.filter{it.status == Constants.BOX_STATUS_TODELIVER})
 
-        Log.i("displayList","${displayList}")
+        //Log.i("displayList","${displayList}")
 
 
         setupToDeliverRecyclerView()
+        setupBottomInformationBox()
 
         ll_sort_button.setOnClickListener(){
 
@@ -57,6 +61,28 @@ class ToDeliverActivity : BaseActivity(), OnAClickListener {
             }
 
             builder.create().show()
+        }
+
+
+        //ccv_box_info
+        ccv_box_info.setOnClickListener {
+            /*val behavior = BottomSheetBehavior.from(ccv_box_info)
+            if (behavior.state == BottomSheetBehavior.STATE_EXPANDED) {
+                //如果是展開狀態，則關閉，反之亦然
+                behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+            } else {
+                behavior.state = BottomSheetBehavior.STATE_EXPANDED
+            }*/
+        if (ll_bottom_expandable_info_detail.visibility == View.GONE) {
+                ll_bottom_expandable_info_detail.visibility = View.VISIBLE
+
+            } else {
+                ll_bottom_expandable_info_detail.visibility = View.GONE
+
+            }
+
+
+            //bottomBoxExpansionState = !bottomBoxExpansionState
         }
     }
 
@@ -127,6 +153,19 @@ class ToDeliverActivity : BaseActivity(), OnAClickListener {
         return super.onOptionsItemSelected(item)
     }
 
+    private fun setupBottomInformationBox() {
+        //main
+        val storeSet = ArraySet<String>()
+
+        tv_box_number2.text = displayList.size.toString()
+        tv_unitA.text = "店 | "
+        val totalCups:Int = displayList.sumBy{it.cupNumber!!}
+        tv_cup_number2.text = totalCups.toString()
+        tv_unitB.text = "個"
+        //expanded
+        tv_bottom_box_detail2.text = "a x 123\nb x 231\nc x 312"
+
+    }
 
 
 

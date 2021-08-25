@@ -21,11 +21,15 @@
     <string name="recycle_history_page">回收紀錄</string>
 
     <!--SubPage Title-->
-    <string name="choose_destination">選擇回收地點</string>
+    <string name="choose_recycle_destination">選擇回收地點</string>
 
+    <!--  -->
+    <string name="choose_delivery_destination">選擇出貨地點</string>
 
     <!--Dialog Title-->
     <string name="dialog_title_sort">排序</string>
+    <string name="title_choose_destination">選擇目的地</string>
+
 
     <!-- 容器功能 -->
     <string name="sign_for_store">代簽收</string>
@@ -48,9 +52,11 @@
     <string name="sort_delivery_date_descending">出貨日期↓(新到舊)</string>
     <string name="sort_delivery_date">出貨日期↑(舊到新)</string>
 
-    
+
     <!-- 頁面訊息 -->
     <string name="no_box_inside">目前沒有箱子</string>
+    <string name="no_input_container_yet">尚未掃瞄任何容器</string>
+    <string name="no_input_to_clean">沒有可清除的資料喔!</string>
     <string name="long_text_example">創建｜0963328359｜2021-01-25 15:32\n裝箱｜0963328359｜2021-01-25 15:32\n入庫｜0963328359｜2021-01-25 15:32</string>
 
 
@@ -59,12 +65,16 @@
     <string name="number_with_hashtag_in_string"># %1$s</string>
 
     <!---->
+    <string name="boxing_in_stock">庫存裝箱</string>
     <string name="finish_edit_box">修改裝箱完成｜%1$s</string>
     <string name="finish_boxing_in_stock">裝箱完成</string>
     <string name="test_name">%1$s</string>
 
-    <!---->
+    <!-- Search Hint -->
     <string name="input_hint_box_id_cup_id">箱子ID、容器ID…</string>
     <string name="input_hint_cup_id">容器ID…</string>
     <string name="input_hint_cup_id_store_name">容器ID、店舖名…</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

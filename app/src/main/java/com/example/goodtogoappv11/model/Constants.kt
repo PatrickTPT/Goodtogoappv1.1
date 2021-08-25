@@ -5,6 +5,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import com.example.goodtogoappv11.data.Datasource
+import com.example.goodtogoappv11.network.Role
 import java.util.*
 
 object Constants {
@@ -23,15 +24,19 @@ object Constants {
     //UNDELIVERED, DELIVERED, UNSIGNED, SIGNED, RELOAD, STOCKED
 
 
+    //
+    const val STORE_STATUS_ACTIVITY = 1
+    const val STORE_STATUS_STORE = 0
+
     //連線驗證定義
     const val APP_ID: String = "test"
-    const val APIKEY_MY_ADMIN = "4309892e10"
-    const val SECRET_KEY_CURRENT = "fBX1EGWYgjyx9eyU"
-    const val BASE_URL: String = "https://app.goodtogo.tw/"
-    const val TEST_URL: String = "https://jsonplaceholder.typicode.com/"
+    const val MY_APIKEY_STATION = "5e4f74ab20"
+    const val MY_SECRET_KEY_STATION = "yEbSYF6oZabaWvOS"
+    const val MY_APIKEY_ADMIN = ""
+    const val MY_SECRET_KEY_ADMIN = ""
 
-    const val MY_PHONE: String = "0963328359"
-    const val MY_PASSWORD: String = ""
+    const val BASE_URL: String = "https://app.goodtogo.tw/v8/"
+    const val TEST_URL: String = "https://jsonplaceholder.typicode.com/"
 
     val reqTime: String = Date().time.toString()
     fun reqID(): String {
@@ -41,6 +46,16 @@ object Constants {
         for (i in 0..9) id += hex[Random().nextInt(16)].toString()
         return id
     }
+
+
+
+
+    //登入後身份
+    var myStationName: String = "調度站"
+    var myApiKey: String = "myApiKey"
+    var mySecretKey: String = "mySecretKey"
+
+
 
     //Checking Network
     fun isNetworkAvailable(context: Context) : Boolean{
@@ -67,10 +82,15 @@ object Constants {
     }
 
 
+    //Save RoleList
+    val vRoleList= ArrayList<Role>()
+
 
     //Request Code
     const val BOXING_REQUEST_CODE =1
     const val ADD_DELIVERY_DETAIL_REQUEST_CODE =2
+
+
 
 
 
@@ -81,4 +101,5 @@ object Constants {
     var mediumList: MutableList<Box> = marrayList
     var randomCupNumberStand = 30020
     var latestBoxId = 3018001
+    val storeList = ArrayList<Store>()
 }

@@ -34,7 +34,6 @@ class InputInStockAdapter(
             deleteCup.setOnClickListener{
                 Toast.makeText(context,"How dare you!",Toast.LENGTH_SHORT).show()
                 items.removeAt(absoluteAdapterPosition)
-
                 notifyDataSetChanged()
 
             }

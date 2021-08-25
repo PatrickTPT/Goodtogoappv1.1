@@ -1,6 +1,7 @@
 package com.example.goodtogoappv11
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.EditText
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +20,6 @@ import com.example.goodtogoappv11.data.Datasource
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.BOXING_REQUEST_CODE
 import com.example.goodtogoappv11.model.Constants.VIEW_TYPE_ONE
-import com.example.goodtogoappv11.model.Constants.marrayList
 import com.example.goodtogoappv11.model.Constants.mediumList
 import kotlinx.android.synthetic.main.activity_instock.*
 import kotlinx.android.synthetic.main.item_sort.*
@@ -192,9 +194,7 @@ class InStockActivity : BaseActivity(), OnAClickListener {
 
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
@@ -214,10 +214,10 @@ class InStockActivity : BaseActivity(), OnAClickListener {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText!!.isNotEmpty()) {
+                    if (newText != null) {
                         displayList.clear()
                         val search = newText.lowercase(Locale.getDefault())
-                        marrayList.forEach {
+                        mediumList.forEach {
                             if (it.viewType == VIEW_TYPE_ONE) {
                                 if (it.boxid.toString().lowercase().contains(search)
                                     || it.date.toString().lowercase().contains(search)
@@ -251,7 +251,14 @@ class InStockActivity : BaseActivity(), OnAClickListener {
     }
 
 
+val resultContract = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+    result: ActivityResult? ->
+    if(result?.resultCode == Activity.RESULT_OK){
 
+    }else{
+
+    }
+}
 
 
     companion object{
@@ -265,9 +272,11 @@ class InStockActivity : BaseActivity(), OnAClickListener {
         val SORT_TYPE_DATE = 3
         val SORT_TYPE_STORE = 4
 
-        val EDIT_BOX_IN_STOCK_REQUEST_CODE = 1
-        val DELIVERY_OPTION_REQUEST_CODE = 2
+        val EDIT_BOX_IN_STOCK_REQUEST_CODE = 11
+        val DELIVERY_OPTION_REQUEST_CODE = 12
 
     }
+
+
 
 }

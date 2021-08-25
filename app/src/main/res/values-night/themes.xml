@@ -14,6 +14,32 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.Goodtogoappv11.WithBar" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/goodtogo_blue</item>
+        <item name="colorPrimaryVariant">@color/goodtogo_blue_variant</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/goodtogo_yellow</item>
+        <item name="colorSecondaryVariant">@color/goodtogo_yellow_variant</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="titleCentered">true</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.MaterialComponents.Headline6</item>
+    </style>
+
+    <style name="Theme.Goodtogoappv11.WithBar.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Goodtogoappv11.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.Goodtogoappv11.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <!--<item name="colorControlNormal">#aA5500</item>-->
+        <!--<item name="colorControlActivated">#DC1068</item>-->
+        <!--<item name="colorControlHighlight">#FFC000</item>-->
+    </style>
+
     <style name="CornerCut">
         <item name="android:topRightRadius">10dp</item>
         <item name="cornerFamilyTopRight">cut</item>

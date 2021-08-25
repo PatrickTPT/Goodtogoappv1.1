@@ -7,19 +7,20 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.goodtogoappv11.adapter.DispatchRecordAdapter
+import com.example.goodtogoappv11.adapter.DispatchHistoryAdapter
+import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.data.Datasource
-import com.example.goodtogoappv11.model.Constants.marrayList
+import com.example.goodtogoappv11.model.Constants
 import kotlinx.android.synthetic.main.activity_dispatch_record.*
 import java.util.*
 
-class DispatchRecordActivity : BaseActivity() {
+class DispatchHistoryActivity : BaseActivity(), OnAClickListener {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dispatch_record)
-        titleText = "調度紀錄"
+        titleText = String.format(getString(R.string.dispatch_history_page))
         setupLightWeightActionBar()
 
         displayList.addAll(Datasource().loadBoxesbkup())
@@ -31,14 +32,20 @@ class DispatchRecordActivity : BaseActivity() {
     private fun setupRecyclerView() {
         rv_dispatch_record.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        adapter = DispatchRecordAdapter(this, displayList)
+        adapter = DispatchHistoryAdapter(this, displayList,this)
+
         rv_dispatch_record.adapter = adapter
         rv_dispatch_record.setHasFixedSize(true)
-        if (rv_dispatch_record != null) {
+
+        if (rv_dispatch_record != null && displayList.size > 0) {
             tv_noContainer3_2.visibility = View.GONE
         } else {
             tv_noContainer3_2.visibility = View.VISIBLE
         }
+    }
+
+    override fun onAClick(position: Int) {
+        val clickedItem = Datasource().loadBoxes()[position]
     }
 
 
@@ -62,7 +69,7 @@ class DispatchRecordActivity : BaseActivity() {
                     if (newText!!.isNotEmpty()) {
                         displayList.clear()
                         val search = newText.lowercase(Locale.getDefault())
-                        marrayList.forEach {
+                        Constants.mediumList.forEach {
                             if (it.boxid.toString().lowercase().contains(search)
                                 ||it.date.toString().lowercase().contains(search)) {
                                 displayList.add(it)
@@ -72,7 +79,7 @@ class DispatchRecordActivity : BaseActivity() {
 
                     } else {
                         displayList.clear()
-                        displayList.addAll(marrayList)
+                        displayList.addAll(Constants.mediumList)
                         adapter!!.notifyDataSetChanged()
                     }
                     return true

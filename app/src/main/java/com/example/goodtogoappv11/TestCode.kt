@@ -7,9 +7,9 @@ fun main(){
 
 
 
-    val base64Encoded = Base64.encodeToString(Constants.SECRET_KEY_CURRENT.toByteArray(), 0)
+    val base64Encoded = Base64.encodeToString(Constants.MY_SECRET_KEY_STATION.toByteArray(), 0)
 
-    println(Constants.SECRET_KEY_CURRENT)
+    println(Constants.MY_SECRET_KEY_STATION)
     println(base64Encoded)
     println(base64Encoded.length)
 

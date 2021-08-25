@@ -5,70 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ToDeliverActivity"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@color/lightGrey">
+    android:background="@color/lightGrey"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_noContainer2_1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="@string/no_box_inside"
-            tools:visibility="gone"/>
+
 
         <LinearLayout
             android:id="@+id/ll_sort_bar_adr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/transparent"
             android:orientation="horizontal"
             android:padding="10dp"
-            android:visibility="visible"
-            android:background="@color/transparent">
+            android:visibility="visible">
 
-            <include layout="@layout/item_sort"/>
+            <include layout="@layout/item_sort" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/layout_filter_grey_bg"
-                android:orientation="horizontal"
-                android:padding="8dp"
                 android:elevation="1dp"
-                android:layout_marginStart="8dp">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/ic_filter_grey_24"/>
+                    android:src="@drawable/ic_filter_grey_24" />
 
                 <TextView
                     android:id="@+id/tv_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
                     android:text="未篩選"
-                    android:textColor="@color/mediumGrey"
-                    android:layout_marginHorizontal="10dp"/>
+                    android:textColor="@color/mediumGrey" />
 
 
             </LinearLayout>
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/tv_noContainer2_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/no_box_inside"
+            tools:visibility="gone" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_to_deliver"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <include layout="@layout/item_bottom_infobox_fullwidth_2"/>
-
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
 
-    </LinearLayout>
+    <include
+        layout="@layout/item_bottom_infobox_fullwidth_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        />
+
 
 </LinearLayout>

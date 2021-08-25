@@ -98,11 +98,11 @@
         android:id="@+id/rv_InStock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ll_sort_bar"
         android:layout_above="@id/ccv_box_info"
+        android:layout_below="@id/ll_sort_bar"
         android:padding="4dp"
         android:scrollbars="vertical"
-        app:layoutManager="LinearLayoutManager"/>
+        app:layoutManager="LinearLayoutManager" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/packingFab"
@@ -187,7 +187,7 @@
 
 
             <LinearLayout
-                android:id="@+id/v_instock_expandable_info_detail"
+                android:id="@+id/ll_bottom_expandable_info_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"

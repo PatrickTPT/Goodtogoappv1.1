@@ -5,4 +5,8 @@
         android:id="@+id/item_setting"
         android:title="設定"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/item_getAuth"
+        android:title="顯示授權碼"
+        app:showAsAction="never" />
 </menu>

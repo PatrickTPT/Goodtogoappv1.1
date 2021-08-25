@@ -1,6 +1,7 @@
 package com.example.goodtogoappv11.network
 
-import org.json.JSONObject
+import com.example.goodtogoappv11.network.reload.ReloadResponse
+import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -9,12 +10,14 @@ import retrofit2.http.POST
 
 interface ourService {
 
+    /** Success */
     @POST("users/login")
     fun postLogin(
-        @Header("reqID") reqId: String,
-        @Header("reqTime") reqTime: String,
-        @Body() body: JSONObject
+        @Header("reqId")reqId: String,
+        @Header("reqTime")reqTime: String,
+        @Body body: JsonObject
         ): Call<LoginResponse>
+
 
     @POST("users/logout")
     fun postLogout(
@@ -22,22 +25,25 @@ interface ourService {
         @Header("ApiKey") ApiKey: String
     ): Call<LogoutResponse>
 
+
     @GET("containers/challenge/token")
     fun getContainersChallengeToken(
         @Header("Authorization")Authorization: String,
         @Header("ApiKey") ApiKey: String
     ): Call<UriResponse>
 
-    //verified!
+
+    /** Success */
     @GET("containers/get/list")
     fun containersGetList(
         @Header("reqId")reqId: String,
         @Header("reqTime")reqTime: String
     ) :Call<ContainerGetListResponse>
 
-    //verified!
+
+    /** Success */
     @GET("stores/list")
-    fun getStoreslist(
+    fun getStoresList(
         @Header("reqId")reqId: String,
         @Header("reqTime")reqTime: String
     ) :Call<StoresListResponse>
@@ -48,6 +54,21 @@ interface ourService {
         @Header("Authorization")Authorization: String,
         @Header("ApiKey") ApiKey: String
     ) :Call<BoxToSignListResponse>
+
+
+    @GET("deliveryList/reloadHistory")
+    fun getReloadList(
+        @Header("Authorization") Authorization: String,
+        @Header("ApiKey") ApiKey: String
+    ) :Call<ReloadResponse>
+
+
+
+
+
+
+
+
 
 
 

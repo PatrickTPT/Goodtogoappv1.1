@@ -1,5 +1,6 @@
 package com.example.goodtogoappv11
 
+import android.app.AlertDialog
 import android.app.Dialog
 import android.widget.FrameLayout
 import android.widget.Toast
@@ -28,7 +29,12 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog = Dialog(this)
         mProgressDialog.setContentView(R.layout.dialog_custom_progress)
         mProgressDialog.tv_progress_text.text = text
+
         mProgressDialog.show()
+
+        //TODO: add this when timeout function added:
+        // mProgressDialog.setCancelable(false)
+        //
     }
 
     fun hideProgressDialog(){
@@ -66,6 +72,20 @@ open class BaseActivity : AppCompatActivity() {
         }
         // TODO: (NiceToHave) add BackPressed listener to finish() current Activity
     }
+
+    fun simpleAlertDialog(title: String, message:String){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK"){ dialogInterface, which ->
+                    dialogInterface.dismiss()
+                }
+        val simpleAlertDialog = builder.create()
+            //simpleAlertDialog.setCancelable(false) //dialog can't be cancel outside
+            simpleAlertDialog.show()
+    }
+
+
 
     /*open fun setupIntegratedRecyclerView(
         rv_this: RecyclerView,

@@ -23,12 +23,12 @@ class EditBoxInStockActivity : BaseInputActivity(){
 
         // 輸入鍵功能宣告
         inputBtn.setOnClickListener {
-            inputAction()
+            //inputAction()
         }
 
         //清除資料功能宣告
         clearBtn.setOnClickListener {
-            infoboxDisplay()
+            //infoboxDisplay()
         }
 
         //傳送資料功能宣告

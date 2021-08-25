@@ -1,6 +1,7 @@
 package com.example.goodtogoappv11
 
 import android.os.Bundle
+import android.os.Handler
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -29,6 +30,7 @@ class RecycleActivity : BaseInputActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
 
 
+
         idInputSlot = findViewById<EditText>(R.id.et_idInputSlot)
         inputBtn = findViewById<Button>(R.id.button3)
         tv_box_count = findViewById<TextView>(R.id.tv_box_count)
@@ -43,18 +45,18 @@ class RecycleActivity : BaseInputActivity() {
 
         // 輸入鍵功能宣告
         inputBtn.setOnClickListener {
-            inputAction()
+            //inputAction()
         }
 
         //清除資料功能宣告
         clearBtn.setOnClickListener {
-            infoboxDisplay()
+            //infoboxDisplay()
         }
 
         //傳送資料功能宣告
         proceedFab.setOnClickListener {
             inputCheck(ResultOfRecycleActivity())
-
+            //TODO:
             //設定讀取fragment(暫緩）
             //val keyInFragment = keyInFragment()
             //supportFragmentManager.beginTransaction().replace(R.id.fragment_container,keyInFragment).commit()
@@ -62,6 +64,13 @@ class RecycleActivity : BaseInputActivity() {
         }
     }
 
+    override fun onStart(){
+        super.onStart()
+        Handler().postDelayed({
+            val dialog = StoreListBottomSheetDialogFragment()
+            dialog.show(supportFragmentManager,"StoreListFragment")
+        }, 1000)
+    }
 
 
 

@@ -1,14 +1,15 @@
-package com.example.goodtogoappv11.recycleHistoryFragment
+package com.example.goodtogoappv11.historyDispatchFragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.goodtogoappv11.R
 
-class GeneralRecycleFragment : Fragment() {
+
+class DispatchInFragment : Fragment() {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,6 @@ class GeneralRecycleFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        Log.d("fragment","general recycle fragment created!")
         return inflater.inflate(R.layout.fragment_general_recycle, container, false)
     }
 

@@ -34,8 +34,11 @@ class DeliveryDetailActivity : AppCompatActivity() {
 
         //TODO:(setup actionbar and home return)
         //TODO:(select position popup)
-        tv_select_destination.text = "好盒器基地"
-
+        tv_select_destination.text = String.format(getString(R.string.choose_delivery_destination))
+        tv_select_destination.setOnClickListener{
+            val dialog = StoreListBottomSheetDialogFragment()
+            dialog.show(supportFragmentManager,"StoreListFragment")
+        }
 
 
         tv_select_deliveryDate.text = dateDisplay(Date())

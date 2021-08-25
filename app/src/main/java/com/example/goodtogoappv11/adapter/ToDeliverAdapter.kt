@@ -11,7 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.goodtogoappv11.EditBoxToDeliverActivity
+import com.example.goodtogoappv11.EditBoxContentToDeliverActivity
+import com.example.goodtogoappv11.EditBoxDateDestinationToDeliverActivity
 import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.model.Box
 import com.example.goodtogoappv11.model.Constants
@@ -113,13 +114,13 @@ class ToDeliverAdapter(
                     .show()
                 }
             editDelivery.setOnClickListener {
-                val editOptionList :Array<String> =arrayOf("修改裝箱內容","修改出貨日期或地點")
+                val editOptionList :Array<String> =arrayOf("修改裝箱內容","修改出貨地點或日期")
                 val builder = AlertDialog.Builder(context)
                 builder.setTitle("修改")
                     .setItems(editOptionList){_,which->
                         when(which){
                             0 -> {
-                                val intent = Intent(context, EditBoxToDeliverActivity::class.java)
+                                val intent = Intent(context, EditBoxContentToDeliverActivity::class.java)
                                 intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
                                 intent.putExtra("date","${items[absoluteAdapterPosition].date}")
                                 ContextCompat.startActivity(context, intent, null)
@@ -127,7 +128,11 @@ class ToDeliverAdapter(
                                 //TODO
                             }
                             1 -> {
-
+                                val intent = Intent(context, EditBoxDateDestinationToDeliverActivity::class.java)
+                                intent.putExtra("boxid","${items[absoluteAdapterPosition].boxid}")
+                                intent.putExtra("date","${items[absoluteAdapterPosition].date}")
+                                ContextCompat.startActivity(context, intent, null)
+                                items[absoluteAdapterPosition].expandable = false
                             }
                         }
                     }
