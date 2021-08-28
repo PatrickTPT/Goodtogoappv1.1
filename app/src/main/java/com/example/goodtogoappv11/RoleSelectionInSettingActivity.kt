@@ -1,6 +1,5 @@
 package com.example.goodtogoappv11
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +14,7 @@ import com.example.goodtogoappv11.model.Constants.vRoleList
 import com.example.goodtogoappv11.network.Role
 import kotlinx.android.synthetic.main.activity_role_selection.*
 
-class RoleSelectionActivity : AppCompatActivity(), OnAClickListener {
+class RoleSelectionInSettingActivity : AppCompatActivity(), OnAClickListener {
 
     private lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
     private val displayRoleList= ArrayList<Role>()
@@ -67,8 +66,7 @@ class RoleSelectionActivity : AppCompatActivity(), OnAClickListener {
 
 
         if (clickedItem.roleType == "station"){
-            val intent = Intent(this@RoleSelectionActivity, MainActivity::class.java)
-            intent.putExtra("EXTRACT_STORE_NAME",getName())
+
             myStationName = getName()
             myApiKey = clickedItem.apiKey
             mySecretKey = clickedItem.secretKey
@@ -76,7 +74,7 @@ class RoleSelectionActivity : AppCompatActivity(), OnAClickListener {
                     "ApiKey: $myApiKey\n" +
                     "SecretKey: $mySecretKey",
                 Toast.LENGTH_SHORT).show()
-            startActivity(intent)
+
             finish()
         } else {
             Toast.makeText(this, "${getName()}為店舖身份，\n目前尚未開放，\n請再等一下！", Toast.LENGTH_SHORT).show()

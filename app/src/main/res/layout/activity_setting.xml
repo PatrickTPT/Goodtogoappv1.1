@@ -16,6 +16,7 @@
         android:paddingHorizontal="40dp"
         android:background="@color/white"
         android:layout_marginBottom="1dp"
+        android:textSize="18sp"
         android:text="目前站點" />
     <TextView
         android:id="@+id/tv_change_password"
@@ -26,6 +27,7 @@
         android:background="@color/white"
         android:layout_marginBottom="1dp"
         android:textColor="@color/mediumGrey"
+        android:textSize="18sp"
         android:text="更改密碼" />
     <TextView
         android:id="@+id/tv_choose_default_input"
@@ -36,6 +38,7 @@
         android:background="@color/white"
         android:layout_marginBottom="1dp"
         android:textColor="@color/mediumGrey"
+        android:textSize="18sp"
         android:text="預設輸入方式" />
     <TextView
         android:id="@+id/tv_scynchronize"
@@ -46,6 +49,7 @@
         android:background="@color/white"
         android:layout_marginBottom="1dp"
         android:textColor="@color/mediumGrey"
+        android:textSize="18sp"
         android:text="同步紀錄" />
 
     <TextView
@@ -55,6 +59,7 @@
         android:paddingVertical="14dp"
         android:paddingHorizontal="40dp"
         android:background="@color/white"
+        android:textSize="18sp"
         android:text="登出" />
 
     <TextView
@@ -62,6 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
+        android:textColor="@color/mediumGrey"
+        android:paddingTop="8dp"
         android:text="@string/current_version" />
 
 </LinearLayout>

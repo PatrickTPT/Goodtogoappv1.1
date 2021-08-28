@@ -29,8 +29,13 @@ class SettingActivity : BaseActivity() {
         titleText = "設定"
         setupLightWeightActionBar()
 
-        tv_current_role.setOnClickListener{
 
+
+
+
+        tv_current_role.setOnClickListener{
+            startActivity(Intent(this,RoleSelectionInSettingActivity::class.java))
+            //quickToast("I wanna switch my identity.")
         }
 
 
@@ -46,7 +51,7 @@ class SettingActivity : BaseActivity() {
                 logout()
 
             }
-            builder.setNegativeButton("回去工作") { dialog, id ->
+            builder.setNeutralButton("回去工作") { dialog, id ->
                 dialog.dismiss()
 
             }
@@ -56,9 +61,14 @@ class SettingActivity : BaseActivity() {
 
     }
 
+    override fun onStart() {
+        tv_current_role.text = myStationName
+        super.onStart()
+    }
+
     fun logout() {
         if(Constants.isNetworkAvailable(this)){
-            Toast.makeText(this,"network connected", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"network connected", Toast.LENGTH_SHORT).show()
 
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -93,7 +103,7 @@ class SettingActivity : BaseActivity() {
                         startActivity(intent)
                         finish()
 
-                        //finishActivity(111)
+
 
 
 

@@ -16,7 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Goodtogoappv11.WithBar">
         <activity
+            android:name=".RoleSelectionInSettingActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
             android:name=".RoleSelectionActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
             android:name=".ResultOfBoxingInStockActivity"
