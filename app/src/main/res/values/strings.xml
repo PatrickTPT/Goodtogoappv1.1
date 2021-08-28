@@ -58,7 +58,7 @@
     <string name="no_input_container_yet">尚未掃瞄任何容器</string>
     <string name="no_input_to_clean">沒有可清除的資料喔!</string>
     <string name="long_text_example">創建｜0963328359｜2021-01-25 15:32\n裝箱｜0963328359｜2021-01-25 15:32\n入庫｜0963328359｜2021-01-25 15:32</string>
-
+    <string name="more_containerType">還有%1$d種貨品</string>
 
     <!-- some variables-->
     <string name="number_with_hashtag"># %1$d</string>
@@ -76,5 +76,7 @@
     <string name="input_hint_cup_id_store_name">容器ID、店舖名…</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="current_version">version: beta v0.6</string>
+
 
 </resources>

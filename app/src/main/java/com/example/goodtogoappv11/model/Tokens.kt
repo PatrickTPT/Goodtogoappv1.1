@@ -4,7 +4,6 @@ import android.util.Base64
 import com.example.goodtogoappv11.model.Constants.mySecretKey
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
-import java.security.Key
 import java.util.*
 import javax.crypto.SecretKey
 import javax.crypto.spec.SecretKeySpec
@@ -25,25 +24,23 @@ object Tokens {
 
         //val claims : Claims = Jwts.claims()
         /**proved by Ezou*/
-        val base64Encoded = Base64.encodeToString(Constants.MY_SECRET_KEY_STATION.toByteArray(), 0)
-        val secretKeytoByte = Constants.MY_SECRET_KEY_STATION.toByteArray()
+        val base64Encoded = Base64.encodeToString(mySecretKey.toByteArray(), 0)  //it worked! first step
 
+
+        //test
+        //val secretKeytoByte = Constants.MY_SECRET_KEY_STATION.toByteArray()
         //val hmacKey: ByteArray = base64Encoded.toByteArray(StandardCharsets.UTF_8)
-        var key : Key = SecretKeySpec(base64Encoded.toByteArray(), SignatureAlgorithm.HS256.getJcaName())
+        //var key : Key = SecretKeySpec(base64Encoded.toByteArray(), SignatureAlgorithm.HS256.getJcaName())
+
 
         return Jwts.builder()
             .setHeaderParam("typ","JWT")
             .claim("exp",expmillis)
             .claim("iat",millis)
             .claim("jti",Constants.reqID())
-            .signWith(SignatureAlgorithm.HS256,convertStringToSecretKey(mySecretKey))
+            .signWith(SignatureAlgorithm.HS256,convertStringToSecretKey(base64Encoded))
             .compact()
 
-        /** Remote test station*/
-        //return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzAwNjM3NDY4OTAsImlhdCI6MTYyOTgwNDU0Njg5MCwianRpIjoiSWpJd01qRXRNRGd0TWpkVU1URTZNams2TURZdU9Ea3dXaUkifQ.EaCWNLrEWknxOOz3vq9cNiCfsku07cCIwDrGLjjsMqo"
-
-        /** Remote v8 station*/
-        //return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzAwOTMyMjQ4NjcsImlhdCI6MTYyOTgzNDAyNDg2OCwianRpIjoiSWpJd01qRXRNRGd0TWpkVU1UazZOREE2TWpRdU9EWTNXaUkifQ.D3gWsCnhwlhR3oRfrLvwgtq91XJWD1iDUUMZUx2O-oc"
 
 
     //.setId(Constants.reqID()).setClaims(claims)

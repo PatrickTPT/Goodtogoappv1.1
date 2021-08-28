@@ -1,11 +1,16 @@
 package com.example.goodtogoappv11
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.myApiKey
+import com.example.goodtogoappv11.model.Constants.mySecretKey
+import com.example.goodtogoappv11.model.Constants.myStationName
+import com.example.goodtogoappv11.model.Constants.vRoleList
 import com.example.goodtogoappv11.model.Tokens
 import com.example.goodtogoappv11.network.LogoutResponse
 import com.example.goodtogoappv11.network.ourService
@@ -24,27 +29,28 @@ class SettingActivity : BaseActivity() {
         titleText = "設定"
         setupLightWeightActionBar()
 
-        btn_sign_out.setOnClickListener(){
+        tv_current_role.setOnClickListener{
 
-            showProgressDialog("登出中...")
-            logout()
+        }
 
 
-            /*val builder = AlertDialog.Builder(this)
-            builder.setTitle("確定登出")
+
+        tv_sign_out.setOnClickListener(){
+
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("確定登出？")
             builder.setMessage("Are you sure?")
             builder.setPositiveButton("登出") { dialog, _ ->
                 dialog.dismiss()
-                startActivity(Intent(this,LoginActivity::class.java))
-                exitProcess(-1)
-                finish()
+                showProgressDialog("登出中...")
+                logout()
 
             }
             builder.setNegativeButton("回去工作") { dialog, id ->
                 dialog.dismiss()
 
             }
-            builder.show()*/
+            builder.show()
 
         }
 
@@ -74,9 +80,24 @@ class SettingActivity : BaseActivity() {
                 ) {
                     if(response.isSuccessful){
                         val logoutList: LogoutResponse? = response.body()
-                        Toast.makeText(this@SettingActivity,"${logoutList.toString()}",
-                            Toast.LENGTH_SHORT).show()
-                        //Log.i("Response Result","$LogoutResponse")
+                        //Toast.makeText(this@SettingActivity,"${logoutList.toString()}",
+                        //    Toast.LENGTH_SHORT).show()
+                        hideProgressDialog()
+
+                        myStationName = "Name Cleared"
+                        myApiKey = "ApiKey Cleared"
+                        mySecretKey = "SecretKey Cleared"
+                        vRoleList.clear()
+
+                        val intent = Intent(this@SettingActivity,LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
+
+                        //finishActivity(111)
+
+
+
+
                     } else {
                         try {
                             hideProgressDialog()

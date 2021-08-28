@@ -12,11 +12,9 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AlertDialog
 import com.example.goodtogoappv11.model.Constants
-import com.example.goodtogoappv11.model.Constants.MY_APIKEY_STATION
 import com.example.goodtogoappv11.model.Constants.vRoleList
 import com.example.goodtogoappv11.model.Tokens.standardAut
 import com.example.goodtogoappv11.network.*
-import com.example.goodtogoappv11.network.reload.ReloadResponse
 import com.google.gson.JsonObject
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -60,10 +58,10 @@ class LoginActivity : BaseActivity() {
 
         val btnSignInShortcut: Button = findViewById(R.id.btnSignInPass)
         btnSignInShortcut.setOnClickListener{
-            //et_name.setText("0963328359")
+            et_name.setText("0963328359")
 
-            startActivity(Intent(this, MainActivity::class.java))
-            //Log.i("QuickLogin","quick pass clicked")
+            //startActivity(Intent(this, MainActivity::class.java))
+
         }
 
 
@@ -86,7 +84,7 @@ class LoginActivity : BaseActivity() {
                     //containersGetList()
                     //boxtosignGetList()
                     //customDialog("test")
-                    reloaddGetList()
+
                 }
                 .setNegativeButton("Stay"){
                         dialog, _->
@@ -98,6 +96,84 @@ class LoginActivity : BaseActivity() {
 
         }
     }
+
+
+
+
+
+
+
+    private fun login(phoneInput:String, passwordInput: String){
+        if(Constants.isNetworkAvailable(this)){
+            //Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
+
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val service : ourService = retrofit
+                .create<ourService>(ourService::class.java)
+
+            /** Main Variables */
+            val jsonObject = JsonObject()
+            jsonObject.addProperty("phone",phoneInput)
+            jsonObject.addProperty("password", passwordInput)
+
+
+            val listCall: Call<LoginResponse> = service.postLogin(
+                Constants.reqID(), Constants.reqTime, jsonObject
+            )
+
+            listCall.enqueue(object : Callback<LoginResponse>{
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>,
+                ) {
+                    if(response.isSuccessful){
+                        val loginList: LoginResponse? = response.body()
+                        //Toast.makeText(this@LoginActivity,"${loginList!!.roleList.toString()}",Toast.LENGTH_SHORT).show()
+                        //Log.i("LoginResponse Result","$loginList")
+                        //val savedLoginRoleList = ArrayList<Role>()
+                            if (vRoleList.size == 0) {
+                                for (i in loginList!!.roleList.indices) {
+                                    vRoleList.add(loginList.roleList.get(i))
+                                }
+                            }
+
+
+                        val intent = Intent(this@LoginActivity, RoleSelectionActivity::class.java)
+
+
+                        startActivity(intent)
+                        hideProgressDialog()
+                        finish()
+                    } else {
+                        try {
+                            hideProgressDialog()
+                            simpleAlertDialog("Error",response.errorBody()!!.string())
+
+                            //Toast.makeText(this@LoginActivity, response.errorBody()?.string(),Toast.LENGTH_LONG).show()
+                            //Log.i("errorbody", "onResponse: ${response.errorBody()?.string()}")
+                            //Toast.makeText(this@LoginActivity, jsonObject.toString(), LENGTH_SHORT).show()
+                        } catch (e: IOException) {
+                            Toast.makeText(this@LoginActivity, "Unknown error:", LENGTH_SHORT).show()
+                            e.printStackTrace()
+                        }
+
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Log.e("Errorr", t!!.message.toString())
+                    Toast.makeText(this@LoginActivity,"${t.message.toString()}",Toast.LENGTH_SHORT).show()
+                }
+
+            })
+
+        }
+    }
+
 
 
 
@@ -158,84 +234,6 @@ class LoginActivity : BaseActivity() {
 
         }
     }
-
-
-    private fun login(phoneInput:String, passwordInput: String){
-        if(Constants.isNetworkAvailable(this)){
-            //Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
-
-            val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val service : ourService = retrofit
-                .create<ourService>(ourService::class.java)
-
-            /** Main Variables */
-            val jsonObject = JsonObject()
-            jsonObject.addProperty("phone",phoneInput)
-            jsonObject.addProperty("password", passwordInput)
-
-
-            val listCall: Call<LoginResponse> = service.postLogin(
-                Constants.reqID(), Constants.reqTime, jsonObject
-            )
-
-            listCall.enqueue(object : Callback<LoginResponse>{
-                override fun onResponse(
-                    call: Call<LoginResponse>,
-                    response: Response<LoginResponse>,
-                ) {
-                    if(response.isSuccessful){
-                        val loginList: LoginResponse? = response.body()
-                        //Toast.makeText(this@LoginActivity,"${loginList!!.roleList.toString()}",Toast.LENGTH_SHORT).show()
-                        //Log.i("LoginResponse Result","$loginList")
-                        //val savedLoginRoleList = ArrayList<Role>()
-                            if (vRoleList.size == 0) {
-                                for (i in loginList!!.roleList.indices) {
-                                    vRoleList.add(loginList.roleList.get(i))
-                                }
-                            }
-                        //TODO: clear vRoleList when logging out
-
-                        val intent = Intent(this@LoginActivity, RoleSelectionActivity::class.java)
-
-
-                        startActivity(intent)
-                        hideProgressDialog()
-                        finish()
-                    } else {
-                        try {
-                            hideProgressDialog()
-                            simpleAlertDialog("Error",response.errorBody()!!.string())
-
-                            //Toast.makeText(this@LoginActivity, response.errorBody()?.string(),Toast.LENGTH_LONG).show()
-                            //Log.i("errorbody", "onResponse: ${response.errorBody()?.string()}")
-                            //Toast.makeText(this@LoginActivity, jsonObject.toString(), LENGTH_SHORT).show()
-                        } catch (e: IOException) {
-                            Toast.makeText(this@LoginActivity, "Unknown error:", LENGTH_SHORT).show()
-                            e.printStackTrace()
-                        }
-
-                    }
-                }
-
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    Log.e("Errorr", t!!.message.toString())
-                    Toast.makeText(this@LoginActivity,"${t.message.toString()}",Toast.LENGTH_SHORT).show()
-                }
-
-            })
-
-        }
-    }
-
-
-
-
-
-
 
 
     fun challengetoken(){
@@ -347,58 +345,7 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun reloaddGetList() {
-        if(Constants.isNetworkAvailable(this)){
-            Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
 
-            val retrofit: Retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-
-            val service : ourService = retrofit
-                .create<ourService>(ourService::class.java)
-
-            /** Main Variables */
-            val listCall: Call<ReloadResponse> = service.getReloadList(
-                standardAut(), MY_APIKEY_STATION
-            )
-
-            listCall.enqueue(object : Callback<ReloadResponse>{
-                override fun onResponse(
-                    call: Call<ReloadResponse>,
-                    response: Response<ReloadResponse>,
-                ) {
-                    if(response.isSuccessful){
-                        val list: ReloadResponse? = response.body()
-                        Toast.makeText(this@LoginActivity,"${list.toString()}",Toast.LENGTH_LONG).show()
-                        //Log.i("Response Result","${ContainerGetListResponse()}")
-
-                    } else {
-                        //val error: APIError = ErrorUtils.parseError(response)
-                        try {
-                            Toast.makeText(this@LoginActivity, response.errorBody()?.string(),Toast.LENGTH_LONG).show()
-                            Log.i("errorbody", "onResponse: ${response.errorBody()?.string()}")
-                        } catch (e: IOException) {
-                            Toast.makeText(this@LoginActivity, "Unknown error:", LENGTH_SHORT).show()
-                            e.printStackTrace()
-                        }
-
-
-
-                        Log.i("Auth", "onResponse: ${standardAut()}")
-                    }
-                }
-
-                override fun onFailure(call: Call<ReloadResponse>, t: Throwable) {
-                    Log.e("Errorr", t!!.message.toString())
-                    Toast.makeText(this@LoginActivity,t.message.toString(),Toast.LENGTH_SHORT).show()
-                }
-
-            })
-
-        }
-    }
     /*
     object ErrorUtils {
         fun parseError(response: Response<*>): APIError {

@@ -72,7 +72,9 @@ class RoleSelectionActivity : AppCompatActivity(), OnAClickListener {
             myStationName = getName()
             myApiKey = clickedItem.apiKey
             mySecretKey = clickedItem.secretKey
-            Toast.makeText(this, "ApiKey: $myApiKey,\nSecretKey: $mySecretKey",
+            Toast.makeText(this, "Station: $myStationName\n" +
+                    "ApiKey: $myApiKey\n" +
+                    "SecretKey: $mySecretKey",
                 Toast.LENGTH_SHORT).show()
             startActivity(intent)
             finish()

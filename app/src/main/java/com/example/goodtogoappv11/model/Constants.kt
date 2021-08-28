@@ -55,6 +55,8 @@ object Constants {
     var myApiKey: String = "myApiKey"
     var mySecretKey: String = "mySecretKey"
 
+    //Save RoleList
+    val vRoleList= ArrayList<Role>()
 
 
     //Checking Network
@@ -82,8 +84,7 @@ object Constants {
     }
 
 
-    //Save RoleList
-    val vRoleList= ArrayList<Role>()
+
 
 
     //Request Code

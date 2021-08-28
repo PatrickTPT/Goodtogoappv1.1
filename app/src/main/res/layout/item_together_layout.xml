@@ -11,17 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout android:id="@+id/ll_whole_item"
+        <LinearLayout
+            android:id="@+id/ll_whole_item"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout android:id="@+id/shown_box_info_layout"
+            <LinearLayout
+                android:id="@+id/shown_box_info_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:padding="20dp">
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="4dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -78,35 +81,100 @@
                         android:text="Box Id" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_cup_type"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="type" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tv_x"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="x" />
+                    <LinearLayout
+                        android:id="@+id/ll_box_content1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/tv_cup_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:text="number" />
+                        <TextView
+                            android:id="@+id/tv_cup_type1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="type" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="x" />
+
+                        <TextView
+                            android:id="@+id/tv_cup_number1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_box_content2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/tv_cup_type2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="type" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="x" />
+
+                        <TextView
+                            android:id="@+id/tv_cup_number2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="number" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_box_content3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <TextView
+                            android:id="@+id/tv_more_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            android:text="@string/more_containerType" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:padding="4dp"
                     android:src="@drawable/ic_arrow_down_black_24" />
 
             </LinearLayout>
 
-            <LinearLayout android:id="@+id/ll_box_info"
+            <LinearLayout
+                android:id="@+id/ll_box_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -135,7 +203,8 @@
                     android:layout_marginTop="10dp"
                     android:background="@color/mediumGrey" />
 
-                <LinearLayout android:id="@+id/ll_in_stock"
+                <LinearLayout
+                    android:id="@+id/ll_in_stock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -176,7 +245,8 @@
 
                 </LinearLayout>
 
-                <LinearLayout android:id="@+id/ll_to_deliver"
+                <LinearLayout
+                    android:id="@+id/ll_to_deliver"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -191,13 +261,15 @@
                         android:text="@string/report"
                         android:textColor="@color/mediumGrey" />
 
-                    <TextView android:id="@+id/tv_cancel_arrival"
+                    <TextView
+                        android:id="@+id/tv_cancel_arrival"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="16dp"
                         android:text="@string/cancel_arrival"
                         android:textColor="@color/colorAccent"
-                        android:visibility="gone"/>
+                        android:visibility="gone" />
+
                     <TextView
                         android:id="@+id/tv_cancel_delivery"
                         android:layout_width="wrap_content"

@@ -26,8 +26,11 @@ class RecycleHistoryAdapter(
         View.OnClickListener {
         val boxId: TextView? = view.tv_box_id
         val boxTitle: TextView? = view.tv_box_title
-        val cupType: TextView? = view.tv_cup_type
-        val cupNumber: TextView? = view.tv_cup_number
+        val cupType: TextView? = view.tv_cup_type1
+        val cupType2: TextView? = view.tv_cup_type2
+        val cupNumber: TextView? = view.tv_cup_number1
+        val cupNumber2: TextView? = view.tv_cup_number2
+
 
         val llWholeItem: LinearLayout = view.ll_whole_item
 

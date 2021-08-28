@@ -25,6 +25,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
 
 class MainActivity : BaseActivity() {
 
@@ -36,11 +37,6 @@ class MainActivity : BaseActivity() {
         //setupActionBar()
 
         storesGetListGeneral()
-
-             //val string: String?= intent.getStringExtra("EXTRACT_STORE_NAME")
-             //myStationName = string ?: "null"
-
-
 
 
         val actionBar = supportActionBar
@@ -108,8 +104,10 @@ class MainActivity : BaseActivity() {
 
         recycleHistoryBtn.setOnClickListener {
 
-            startActivity(Intent(this, RecycleHistoryActivity::class.java))
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+            reloaddGetList()
+
+
             Log.v("test","recycleHistory Button clicked")
 
         }
@@ -119,7 +117,7 @@ class MainActivity : BaseActivity() {
     }
 
 
-    private fun storesGetList(){
+    /*private fun storesGetList(){
         if(Constants.isNetworkAvailable(this)){
             //Toast.makeText(this,"network connected", Toast.LENGTH_SHORT).show()
             showProgressDialog("載入中...")
@@ -187,7 +185,7 @@ class MainActivity : BaseActivity() {
             })
 
         }
-    }
+    }*/
 
     private fun storesGetListGeneral(){
         if(storeList.size == 0) {
@@ -259,7 +257,7 @@ class MainActivity : BaseActivity() {
     private fun getReloadHistory(){
         if(Constants.isNetworkAvailable(this)){
             //Toast.makeText(this,"network connected", Toast.LENGTH_SHORT).show()
-            showProgressDialog("載入中...")
+
 
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -279,7 +277,7 @@ class MainActivity : BaseActivity() {
                     response: Response<ReloadResponse>,
                 ) {
                     if(response.isSuccessful){
-                        hideProgressDialog()
+                        //hideProgressDialog()
 
 
                         var newList = ArrayList<ReloadResponseItem>()
@@ -296,28 +294,104 @@ class MainActivity : BaseActivity() {
 
 
 
+
+
+
                     } else {
                         val rc = response.code()
-                        when(rc){
-                            400 -> {
-                                Log.e("Error 400", "Bad Connection")
-                            }
-                            404 -> {
-                                Log.e("Error 404", "Not Found")
-                            }
-                            401 -> {
-                                Log.e("Error 401", "headers' problem")
-                            }
-                            else ->{
-                                Log.e("Error", response.message())
-                            }
-                        }
+
                     }
                 }
 
                 override fun onFailure(call: Call<ReloadResponse>, t: Throwable) {
                     Log.e("Errorr", t!!.message.toString())
-                    Toast.makeText(this@MainActivity,t.message.toString(), Toast.LENGTH_SHORT).show()
+
+                }
+
+            })
+
+        }
+    }
+
+    private fun reloaddGetList() {
+        if(Constants.isNetworkAvailable(this)){
+            showProgressDialog("載入中...")
+            Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
+
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl(Constants.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+
+            val service : ourService = retrofit
+                .create<ourService>(ourService::class.java)
+
+            /** Main Variables */
+            val listCall: Call<ReloadResponse> = service.getReloadList(
+                standardAut(), myApiKey
+            )
+
+            listCall.enqueue(object : Callback<ReloadResponse>{
+                override fun onResponse(
+                    call: Call<ReloadResponse>,
+                    response: Response<ReloadResponse>,
+                ) {
+                    if(response.isSuccessful){
+
+                        var newList = ArrayList<ReloadResponseItem>()
+                        val list: ReloadResponse? = response.body()
+
+                        for(i in list!!.indices){
+                            newList.add(list[i])
+                        }
+
+                        hideProgressDialog()
+                        //val intent = Intent(this@MainActivity, RecycleHistoryActivity::class.java)
+                        //intent.putExtra("reloadList",newList)
+                        simpleAlertDialog("RESULT",newList[4].toString())
+
+
+                        //startActivity(intent)
+                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+
+
+
+
+
+
+
+
+
+
+                        //Toast.makeText(this@MainActivity,"${list.toString()}",Toast.LENGTH_LONG).show()
+                        //Log.i("Response Result","${ContainerGetListResponse()}")
+
+
+
+
+
+
+
+                    } else {
+                        try {
+                            hideProgressDialog()
+                            simpleAlertDialog("Error",response.errorBody()!!.string())
+                            //Toast.makeText(this@MainActivity, response.errorBody()?.string(),Toast.LENGTH_LONG).show()
+                            //Log.i("errorbody", "onResponse: ${response.errorBody()?.string()}")
+                        } catch (e: IOException) {
+                            Toast.makeText(this@MainActivity, "Unknown error:", Toast.LENGTH_SHORT).show()
+                            e.printStackTrace()
+                        }
+
+
+
+                        Log.i("Auth", "onResponse: ${standardAut()}")
+                    }
+                }
+
+                override fun onFailure(call: Call<ReloadResponse>, t: Throwable) {
+                    Log.e("Errorr", t!!.message.toString())
+                    Toast.makeText(this@MainActivity,t.message.toString(),Toast.LENGTH_SHORT).show()
                 }
 
             })
@@ -372,7 +446,7 @@ class MainActivity : BaseActivity() {
 
             }
             R.id.item_getAuth -> {
-                quickToast("ApiKey: $myApiKey,\nSecretKey: $mySecretKey")
+                quickToast("Station: $myStationName\nApiKey: $myApiKey\nSecretKey: $mySecretKey")
             }
 
 

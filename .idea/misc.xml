@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_recycle_history.xml" value="0.11" />
         <entry key="app/src/main/res/layout/activity_role_selection.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_scan.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.11822916666666666" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_to_deliver.xml" value="0.20425724637681159" />
         <entry key="app/src/main/res/layout/activity_to_sign_for.xml" value="0.2520833333333333" />
@@ -34,7 +34,7 @@
         <entry key="app/src/main/res/layout/item_scan_module.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_single_cup_infobox.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_store.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/item_together_layout.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/item_together_layout.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_role_selection.xml" value="0.335" />
         <entry key="app/src/main/res/layout/layout_test_dialog.xml" value="0.121875" />
         <entry key="app/src/main/res/layout/popup.xml" value="0.20108695652173914" />

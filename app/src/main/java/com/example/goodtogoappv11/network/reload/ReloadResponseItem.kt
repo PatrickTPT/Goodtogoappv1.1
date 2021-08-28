@@ -1,5 +1,7 @@
 package com.example.goodtogoappv11.network.reload
 
+import java.io.Serializable
+
 data class ReloadResponseItem(
     val action: List<Action>,
     val containerHash: String,
@@ -9,4 +11,4 @@ data class ReloadResponseItem(
     val orderContent: List<OrderContent>,
     val status: String,
     val storeID: Int
-)
+): Serializable

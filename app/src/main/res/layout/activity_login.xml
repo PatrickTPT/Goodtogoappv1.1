@@ -98,7 +98,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="version: alpha v0.3"
+        android:text="@string/current_version"
         android:gravity="right|bottom"
         android:layout_weight="1"
         android:layout_gravity="right"/>
