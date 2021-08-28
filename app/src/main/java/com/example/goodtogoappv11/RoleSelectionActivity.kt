@@ -68,14 +68,14 @@ class RoleSelectionActivity : AppCompatActivity(), OnAClickListener {
 
         if (clickedItem.roleType == "station"){
             val intent = Intent(this@RoleSelectionActivity, MainActivity::class.java)
-            intent.putExtra("EXTRACT_STORE_NAME",getName())
+            //intent.putExtra("EXTRACT_STORE_NAME",getName())
             myStationName = getName()
             myApiKey = clickedItem.apiKey
             mySecretKey = clickedItem.secretKey
-            Toast.makeText(this, "Station: $myStationName\n" +
+            /*Toast.makeText(this, "Station: $myStationName\n" +
                     "ApiKey: $myApiKey\n" +
                     "SecretKey: $mySecretKey",
-                Toast.LENGTH_SHORT).show()
+                Toast.LENGTH_SHORT).show()*/
             startActivity(intent)
             finish()
         } else {

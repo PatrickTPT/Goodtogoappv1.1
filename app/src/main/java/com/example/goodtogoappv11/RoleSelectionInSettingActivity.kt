@@ -1,5 +1,6 @@
 package com.example.goodtogoappv11
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -70,12 +71,12 @@ class RoleSelectionInSettingActivity : AppCompatActivity(), OnAClickListener {
             myStationName = getName()
             myApiKey = clickedItem.apiKey
             mySecretKey = clickedItem.secretKey
-            Toast.makeText(this, "Station: $myStationName\n" +
+            /*Toast.makeText(this, "Station: $myStationName\n" +
                     "ApiKey: $myApiKey\n" +
                     "SecretKey: $mySecretKey",
-                Toast.LENGTH_SHORT).show()
-
-            finish()
+                Toast.LENGTH_SHORT).show()*/
+            startActivity(Intent(this@RoleSelectionInSettingActivity, MainActivity::class.java))
+            Intent()
         } else {
             Toast.makeText(this, "${getName()}為店舖身份，\n目前尚未開放，\n請再等一下！", Toast.LENGTH_SHORT).show()
         }

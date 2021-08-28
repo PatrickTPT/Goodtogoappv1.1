@@ -187,6 +187,7 @@ class MainActivity : BaseActivity() {
         }
     }*/
 
+    /** On Duty */
     private fun storesGetListGeneral(){
         if(storeList.size == 0) {
             if (Constants.isNetworkAvailable(this)) {
@@ -313,6 +314,7 @@ class MainActivity : BaseActivity() {
         }
     }
 
+    /** Testing*/
     private fun reloaddGetList() {
         if(Constants.isNetworkAvailable(this)){
             showProgressDialog("載入中...")
@@ -443,12 +445,11 @@ class MainActivity : BaseActivity() {
             R.id.item_setting -> {
                 startActivity(Intent(this@MainActivity,SettingActivity::class.java))
                 return true
-
             }
             R.id.item_getAuth -> {
                 quickToast("Station: $myStationName\nApiKey: $myApiKey\nSecretKey: $mySecretKey")
+                return true
             }
-
 
 
         }

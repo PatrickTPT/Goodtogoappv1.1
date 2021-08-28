@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_scan.*
 class RecycleActivity : BaseInputActivity() {
 
     private lateinit var codeScanner: CodeScanner
-
+    private var titleText: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,8 @@ class RecycleActivity : BaseInputActivity() {
         val actionBar = supportActionBar
         actionBar!!.title = "回收"
         if (storeName != null) {
-            actionBar.title = "回收(從 $storeName)"
+            titleText = "回收(從 $storeName)"
+            actionBar.title = titleText
         }
         actionBar.setDisplayHomeAsUpEnabled(true)
 
@@ -66,16 +67,19 @@ class RecycleActivity : BaseInputActivity() {
 
     override fun onStart(){
         super.onStart()
-        Handler().postDelayed({
-            val dialog = StoreListBottomSheetDialogFragment()
-            dialog.show(supportFragmentManager,"StoreListFragment")
-        }, 1000)
+        if(titleText == null) {
+            Handler().postDelayed({
+                val dialog = StoreListBottomSheetDialogFragment()
+                dialog.show(supportFragmentManager, "StoreListFragment")
+            }, 1000)
+        }
     }
 
 
 
     override fun onResume() {
         super.onResume()
+
         //codeScanner.startPreview()
     }
 
