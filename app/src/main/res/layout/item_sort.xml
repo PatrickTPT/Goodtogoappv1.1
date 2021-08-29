@@ -6,23 +6,25 @@
     android:layout_height="wrap_content"
     android:background="@drawable/layout_filter_bg"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="6dp"
     android:elevation="1dp"
     >
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/sort_button_icon_size"
+        android:layout_height="@dimen/sort_button_icon_size"
         android:src="@drawable/ic_sort_yellow_24"/>
     <TextView
         android:id="@+id/tv_sort_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="裝箱日期(新到舊)"
+        android:textSize="@dimen/sort_button_text_size"
+        android:layout_gravity="center_vertical"
         android:textColor="@color/goodtogo_yellow"
-        android:layout_marginHorizontal="10dp"/>
+        android:layout_marginHorizontal="8dp"/>
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="@dimen/sort_button_icon_size"
+        android:layout_height="@dimen/sort_button_icon_size"
         android:src="@drawable/ic_arrow_downward_yellow_24"/>
 </LinearLayout>

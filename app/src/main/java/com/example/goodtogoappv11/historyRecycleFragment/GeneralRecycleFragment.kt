@@ -11,14 +11,14 @@ import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.RecycleHistoryAdapter
 import com.example.goodtogoappv11.data.Datasource
-import com.example.goodtogoappv11.model.Box
-import com.example.goodtogoappv11.model.Constants.mediumList
+import com.example.goodtogoappv11.model.Constants.vReloadList
+import com.example.goodtogoappv11.network.reload.ReloadResponseItem
 import kotlinx.android.synthetic.main.fragment_general_recycle.view.*
 
 class GeneralRecycleFragment : Fragment(), OnAClickListener {
 
 
-    private var displayList= ArrayList<Box>()
+    private var displayList= ArrayList<ReloadResponseItem>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,9 @@ class GeneralRecycleFragment : Fragment(), OnAClickListener {
         // add ViewModel and Live Data to connect two pages
         // integrate with searching
         // remember to add sort when loading
+
         displayList.clear()
-        displayList.addAll(mediumList)
+        displayList.addAll(vReloadList.filter{it.status == "reload"})
 
 
 

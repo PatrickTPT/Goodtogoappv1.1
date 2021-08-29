@@ -23,18 +23,11 @@
             tools:visibility="gone"/>
 
 
-        <LinearLayout
-            android:id="@+id/ll_sort_bar_adr"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:visibility="visible"
-            android:background="@null">
 
-            <include layout="@layout/item_sort"/>
 
-        </LinearLayout>
+        <include layout="@layout/layout_function_bar"/>
+
+
 
 
         <androidx.recyclerview.widget.RecyclerView

@@ -19,6 +19,7 @@ class RoleSelectionInSettingActivity : AppCompatActivity(), OnAClickListener {
 
     private lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
     private val displayRoleList= ArrayList<Role>()
+    val TAG = "RoleSelectionInSettingActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,7 +88,9 @@ class RoleSelectionInSettingActivity : AppCompatActivity(), OnAClickListener {
 
     }
 
-
+    override fun onBackPressed() {
+        Toast.makeText(this, "請選擇身份", Toast.LENGTH_SHORT).show()
+    }
 
 
 

@@ -1,6 +1,7 @@
 package com.example.goodtogoappv11
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.StoreListAdapter
 import com.example.goodtogoappv11.model.Constants
+import com.example.goodtogoappv11.model.Constants.recycleStore
 import com.example.goodtogoappv11.model.Constants.storeList
 import com.example.goodtogoappv11.model.Store
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -45,6 +47,7 @@ class StoreListBottomSheetDialogFragment : BottomSheetDialogFragment(), OnAClick
         view.rv_store_list_fragment.layoutManager = LinearLayoutManager(activity)
         view.rv_store_list_fragment.adapter = StoreListAdapter(displayStoreList, requireContext(), this)
         view.rv_store_list_fragment.setHasFixedSize(true)
+
 
          view.iv_close_fragment.setOnClickListener {
              dismiss()
@@ -90,8 +93,11 @@ class StoreListBottomSheetDialogFragment : BottomSheetDialogFragment(), OnAClick
     override fun onAClick(position: Int) {
 
         val clickedItem = displayStoreList[position]
-        Toast.makeText(context,"你按到 ${clickedItem.name.toString()}", Toast.LENGTH_SHORT).show()
-        //view.dismiss()
+
+        recycleStore = clickedItem.name.toString()
+        Toast.makeText(context,"你按到 $recycleStore", Toast.LENGTH_SHORT).show()
+        Log.i("TAG", "onAClick: store clickEd!")
+        dismiss()
 
     }
 

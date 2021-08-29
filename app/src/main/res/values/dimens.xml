@@ -14,4 +14,8 @@
     <dimen name="textSize_store_info">12sp</dimen>
     <dimen name="margin_H_store_divider">6dp</dimen>
 
+    <!-- sort button element -->
+    <dimen name="sort_button_icon_size">16dp</dimen>
+    <dimen name="sort_button_text_size">11sp</dimen>
+    <dimen name="cup_main_info_text_size">12sp</dimen>
 </resources>

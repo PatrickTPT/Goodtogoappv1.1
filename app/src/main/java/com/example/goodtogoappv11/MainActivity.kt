@@ -13,6 +13,7 @@ import com.example.goodtogoappv11.model.Constants.myApiKey
 import com.example.goodtogoappv11.model.Constants.mySecretKey
 import com.example.goodtogoappv11.model.Constants.myStationName
 import com.example.goodtogoappv11.model.Constants.storeList
+import com.example.goodtogoappv11.model.Constants.vReloadList
 import com.example.goodtogoappv11.model.Store
 import com.example.goodtogoappv11.model.Tokens.standardAut
 import com.example.goodtogoappv11.network.StoresListResponse
@@ -104,10 +105,7 @@ class MainActivity : BaseActivity() {
 
         recycleHistoryBtn.setOnClickListener {
 
-
             reloaddGetList()
-
-
             Log.v("test","recycleHistory Button clicked")
 
         }
@@ -314,11 +312,11 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    /** Testing*/
+    /** On Duty */
     private fun reloaddGetList() {
         if(Constants.isNetworkAvailable(this)){
             showProgressDialog("載入中...")
-            Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"network connected",Toast.LENGTH_SHORT).show()
 
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
@@ -347,14 +345,16 @@ class MainActivity : BaseActivity() {
                             newList.add(list[i])
                         }
 
-                        hideProgressDialog()
-                        //val intent = Intent(this@MainActivity, RecycleHistoryActivity::class.java)
+                        vReloadList = newList
+
+
+                        val intent = Intent(this@MainActivity, RecycleHistoryActivity::class.java)
                         //intent.putExtra("reloadList",newList)
-                        simpleAlertDialog("RESULT",newList[4].toString())
+                        //simpleAlertDialog("RESULT",newList[4].toString())
 
-
-                        //startActivity(intent)
-                        //overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
+                        hideProgressDialog()
+                        startActivity(intent)
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
 
 
 

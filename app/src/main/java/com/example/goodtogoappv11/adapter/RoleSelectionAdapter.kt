@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.network.Role
-import kotlinx.android.synthetic.main.layout_role_selection.view.*
+import kotlinx.android.synthetic.main.item_role_selection.view.*
 
 class RoleSelectionAdapter(
     private val context: Context,
@@ -37,7 +37,7 @@ class RoleSelectionAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ViewHolder(LayoutInflater.from(context)
-            .inflate(R.layout.layout_role_selection, parent, false))
+            .inflate(R.layout.item_role_selection, parent, false))
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

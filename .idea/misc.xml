@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/bg_tabindicator.xml" value="0.10104166666666667" />
         <entry key="app/src/main/res/drawable/message_box_rounded_bg.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout-v21/item_bottom_infobox_fullwidth_2.xml" value="0.2520833333333333" />
+        <entry key="app/src/main/res/layout/activity_delivery_history.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_dispatch_record.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/layout/activity_instock.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.21739130434782608" />
@@ -19,7 +20,7 @@
         <entry key="app/src/main/res/layout/activity_scan.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_to_deliver.xml" value="0.20425724637681159" />
+        <entry key="app/src/main/res/layout/activity_to_deliver.xml" value="0.375" />
         <entry key="app/src/main/res/layout/activity_to_sign_for.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/dialog_custom_progress.xml" value="0.12552083333333333" />
         <entry key="app/src/main/res/layout/fragment_bottom_sheet_dialog.xml" value="0.12259371833839919" />
@@ -31,10 +32,14 @@
         <entry key="app/src/main/res/layout/item_bottom_infobox.xml" value="0.121875" />
         <entry key="app/src/main/res/layout/item_bottom_infobox_full_width.xml" value="0.2151268115942029" />
         <entry key="app/src/main/res/layout/item_bottom_infobox_fullwidth_2.xml" value="0.20108695652173914" />
+        <entry key="app/src/main/res/layout/item_filter.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_in_stock_layout.xml" value="0.1046875" />
         <entry key="app/src/main/res/layout/item_scan_module.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_single_cup_infobox.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_sort.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_store.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_together_layout.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/layout_function_bar.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_role_selection.xml" value="0.335" />
         <entry key="app/src/main/res/layout/layout_test_dialog.xml" value="0.121875" />
         <entry key="app/src/main/res/layout/popup.xml" value="0.20108695652173914" />

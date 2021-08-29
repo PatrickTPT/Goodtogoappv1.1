@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_sort_bar_adr"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/transparent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+
+    <LinearLayout
+        android:id="@+id/ll_sort_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/layout_filter_bg"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <ImageView
+            android:layout_width="@dimen/sort_button_icon_size"
+            android:layout_height="@dimen/sort_button_icon_size"
+            android:src="@drawable/ic_sort_yellow_24" />
+
+        <TextView
+            android:id="@+id/tv_sort_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="8dp"
+            android:text="裝箱日期(新到舊)"
+            android:textColor="@color/goodtogo_yellow"
+            android:textSize="@dimen/sort_button_text_size" />
+
+        <ImageView
+            android:layout_width="@dimen/sort_button_icon_size"
+            android:layout_height="@dimen/sort_button_icon_size"
+            android:src="@drawable/ic_arrow_downward_yellow_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_filter_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/layout_filter_grey_bg"
+        android:elevation="1dp"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+
+        <ImageView
+            android:layout_width="@dimen/sort_button_icon_size"
+            android:layout_height="@dimen/sort_button_icon_size"
+            android:src="@drawable/ic_filter_grey_24" />
+
+        <TextView
+            android:id="@+id/tv_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="未篩選"
+            android:textColor="@color/mediumGrey"
+            android:textSize="@dimen/sort_button_text_size" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

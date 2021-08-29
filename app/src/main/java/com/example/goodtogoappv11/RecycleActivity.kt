@@ -2,28 +2,33 @@ package com.example.goodtogoappv11
 
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import com.budiyev.android.codescanner.CodeScanner
+import com.example.goodtogoappv11.model.Constants.recycleStore
 import kotlinx.android.synthetic.main.activity_scan.*
 
 
 class RecycleActivity : BaseInputActivity() {
 
     private lateinit var codeScanner: CodeScanner
-    private var titleText: String? = null
+    var titleText: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.i("TAG", "onCreate()")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
         val storeName = intent.getStringExtra("EXTRACT_STORE_NAME")
 
         //setupActionBar()
+        recycleStore= "店舖"
 
         //標題列設定
-        val actionBar = supportActionBar
-        actionBar!!.title = "回收"
+        val actionBar= supportActionBar
+        actionBar!!.title = "回收喔"
         if (storeName != null) {
             titleText = "回收(從 $storeName)"
             actionBar.title = titleText
@@ -66,6 +71,7 @@ class RecycleActivity : BaseInputActivity() {
     }
 
     override fun onStart(){
+        Log.i("TAG", "onStart()")
         super.onStart()
         if(titleText == null) {
             Handler().postDelayed({
@@ -73,18 +79,33 @@ class RecycleActivity : BaseInputActivity() {
                 dialog.show(supportFragmentManager, "StoreListFragment")
             }, 1000)
         }
+
+
     }
 
 
 
     override fun onResume() {
+        Log.i("TAG", "onResumeD()")
+        val actionBar= supportActionBar
+
+        if (recycleStore == "店舖") {
+
+            actionBar!!.title = "回收"
+
+        } else {
+            titleText = "回收(從 $recycleStore)"
+            actionBar!!.title = titleText
+        }
         super.onResume()
+
 
         //codeScanner.startPreview()
     }
 
     override fun onPause() {
         //codeScanner.releaseResources()
+        Log.i("TAG", "onPause()")
         super.onPause()
     }
 

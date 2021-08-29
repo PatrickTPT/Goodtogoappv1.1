@@ -6,6 +6,7 @@ import android.net.NetworkCapabilities
 import android.os.Build
 import com.example.goodtogoappv11.data.Datasource
 import com.example.goodtogoappv11.network.Role
+import com.example.goodtogoappv11.network.reload.ReloadResponseItem
 import java.util.*
 
 object Constants {
@@ -55,8 +56,17 @@ object Constants {
     var myApiKey: String = "myApiKey"
     var mySecretKey: String = "mySecretKey"
 
-    //Save RoleList
+    //Saved RoleList
     val vRoleList= ArrayList<Role>()
+
+    //Saved RecycleStore
+    var recycleStore= "店舖"
+
+    //Saved ReloadList
+    var vReloadList = ArrayList<ReloadResponseItem>()
+
+    //Saved StoreList
+    val storeList = ArrayList<Store>()
 
 
     //Checking Network
@@ -102,5 +112,5 @@ object Constants {
     var mediumList: MutableList<Box> = marrayList
     var randomCupNumberStand = 30020
     var latestBoxId = 3018001
-    val storeList = ArrayList<Store>()
+
 }

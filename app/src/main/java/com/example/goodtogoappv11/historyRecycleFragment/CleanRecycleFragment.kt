@@ -10,21 +10,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.RecycleHistoryAdapter
-import com.example.goodtogoappv11.data.Datasource
-import com.example.goodtogoappv11.model.Box
 import com.example.goodtogoappv11.model.Constants
+import com.example.goodtogoappv11.model.Constants.vReloadList
+import com.example.goodtogoappv11.network.reload.ReloadResponseItem
 import kotlinx.android.synthetic.main.fragment_clean_recycle.view.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 class CleanRecycleFragment : Fragment(), OnAClickListener {
 
-    private var displayList= ArrayList<Box>()
+    private var displayList= ArrayList<ReloadResponseItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         displayList.clear()
-        displayList.addAll(Constants.mediumList)
+        displayList.addAll(vReloadList.filter{it.status == "cleanReload"})
 
         //setHasOptionsMenu(true)
     }
@@ -44,7 +44,8 @@ class CleanRecycleFragment : Fragment(), OnAClickListener {
     }
 
     override fun onAClick(position: Int) {
-        val clickedItem = Datasource().loadBoxes()[position]
+        val clickedItem = displayList[position]
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -68,17 +69,18 @@ class CleanRecycleFragment : Fragment(), OnAClickListener {
                     if (newText != null) {
                         displayList.clear()
                         val search = newText.lowercase(Locale.getDefault())
-                        Constants.mediumList.forEach {
-                            if (it.boxid.toString().lowercase().contains(search)
-                                ||it.date.toString().lowercase().contains(search)) {
+                        Constants.vReloadList.forEach {
+                            if (it.storeID.toString().lowercase().contains(search)
+                                ||it.action[0].timestamps.toString().lowercase().contains(search)
+                                ||it.containerList.toString().lowercase().contains(search)) {
                                 displayList.add(it)
-                            }
+                            } //TODO:轉換storeID成中文名
                         }
                         view!!.rv_second_fragment.adapter?.notifyDataSetChanged()
 
                     } else {
                         displayList.clear()
-                        displayList.addAll(Constants.mediumList)
+                        displayList.addAll(vReloadList)
                         view!!.rv_second_fragment.adapter?.notifyDataSetChanged()
                     }
                     return true

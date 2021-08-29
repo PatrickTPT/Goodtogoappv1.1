@@ -4,7 +4,6 @@ import android.os.Bundle
 import com.example.goodtogoappv11.adapter.RecycleHistoryViewPagerAdapter
 import com.example.goodtogoappv11.historyRecycleFragment.CleanRecycleFragment
 import com.example.goodtogoappv11.historyRecycleFragment.GeneralRecycleFragment
-import com.example.goodtogoappv11.model.Constants.mediumList
 import kotlinx.android.synthetic.main.activity_recycle_history.*
 
 class RecycleHistoryActivity : BaseActivity() {
@@ -17,11 +16,10 @@ class RecycleHistoryActivity : BaseActivity() {
         titleText = String.format(getString(R.string.recycle_history_page))
         setupLightWeightActionBar()
         displayList.clear()
-        displayList.addAll(mediumList)
 
 
-        val i = intent.getSerializableExtra("reloadList")
-        //quickToast("$i")
+
+
         //TODO: delete this test after livedata created
 
         setupTabs()
