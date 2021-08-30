@@ -12,7 +12,7 @@ class ResultOfEditBoxInStockActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        val history = findViewById<TextView>(R.id.history)
+        val history = findViewById<TextView>(R.id.tv_history)
         val testing =intent.getStringArrayListExtra("Test")
 
         val resultTitle = findViewById<TextView>(R.id.tv_success_title)

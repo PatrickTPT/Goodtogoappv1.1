@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="@color/white"
+    android:layout_marginBottom="1dp"
     >
     <ImageView android:id="@+id/iv_store_station_image"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_margin="12dp"
         android:src="@drawable/ic_add_black_24"/>
 
@@ -15,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:text="store name"
+        android:textSize="20sp"
         android:layout_marginStart="10dp"/>
 
 

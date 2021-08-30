@@ -13,14 +13,14 @@ class ResultOfRecycleActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        val history = findViewById<TextView>(R.id.history)
-        val testing = intent.getStringArrayListExtra("Test")
+        val history = findViewById<TextView>(R.id.tv_history)
+        val testing = intent.getStringArrayListExtra("successRecycleList")
 
         val resultTitle = findViewById<TextView>(R.id.tv_success_title)
         resultTitle.text = "回收成功"
 
 
-        history.text = "$testing"
+        history.text = "${testing.toString().substring(1,testing.toString().length-1)}"
         val nextRecycle: Button = findViewById(R.id.nextRe_button)
         nextRecycle.visibility = View.VISIBLE
 

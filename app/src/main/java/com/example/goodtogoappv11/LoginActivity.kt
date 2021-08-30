@@ -234,8 +234,6 @@ class LoginActivity : BaseActivity() {
 
         }
     }
-
-
     fun challengetoken(){
         if(Constants.isNetworkAvailable(this)){
             Toast.makeText(this,"network connected", LENGTH_SHORT).show()

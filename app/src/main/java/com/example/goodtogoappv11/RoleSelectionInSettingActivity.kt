@@ -79,7 +79,7 @@ class RoleSelectionInSettingActivity : AppCompatActivity(), OnAClickListener {
             startActivity(Intent(this@RoleSelectionInSettingActivity, MainActivity::class.java))
             Intent()
         } else {
-            Toast.makeText(this, "${getName()}為店舖身份，\n目前尚未開放，\n請再等一下！", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "店舖：${getName()}\n目前尚未開放，\n請再等一下！", Toast.LENGTH_SHORT).show()
         }
 
 

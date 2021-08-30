@@ -2,6 +2,7 @@ package com.example.goodtogoappv11
 
 import android.Manifest
 import android.app.Activity
+import android.app.Dialog
 import android.content.pm.PackageManager
 import android.os.Build
 import android.view.Gravity
@@ -19,6 +20,7 @@ import com.example.goodtogoappv11.model.Boxes
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_scan.*
+import kotlinx.android.synthetic.main.dialog_custom_progress.*
 import kotlinx.android.synthetic.main.item_bottom_infobox.*
 import java.util.*
 
@@ -34,10 +36,11 @@ open class BaseInputActivity : AppCompatActivity() {
     lateinit var tv_scanWord: TextView
     lateinit var clearBtn: Button
     lateinit var proceedFab: FloatingActionButton
+    lateinit var rvInfoBox: RecyclerView
     var childList: ArrayList<Boxes.BoxChild> = ArrayList()
     var cupTypeList: ArrayList<String> = ArrayList()
     open lateinit var adapter: RecyclerView.Adapter<RecyclerView.ViewHolder>
-
+    private lateinit var mProgressDialog: Dialog
 
     //val scannerView = findViewById<CodeScannerView>(com.budiyev.android.codescanner.R.id.scanner_View)
 
@@ -278,9 +281,48 @@ open class BaseInputActivity : AppCompatActivity() {
         infoboxExpanded = !infoboxExpanded
     }
 
+    fun infoboxExpansion2(){
+        if (rvInfoBox.visibility == View.GONE) {
+            rvInfoBox.visibility = View.VISIBLE
+            if(childList.size>0){
+                tv_info_left_top.visibility = View.VISIBLE
+            }
+        } else {
+            rvInfoBox.visibility = View.GONE
+            tv_info_left_top.visibility = View.GONE
+        }
 
 
+    }
 
+
+    fun showProgressDialog(text: String){
+        mProgressDialog = Dialog(this)
+        mProgressDialog.setContentView(R.layout.dialog_custom_progress)
+        mProgressDialog.tv_progress_text.text = text
+
+        mProgressDialog.show()
+
+        //TODO: add this when timeout function added:
+        // mProgressDialog.setCancelable(false)
+        //
+    }
+
+    fun hideProgressDialog(){
+        mProgressDialog.dismiss()
+    }
+
+    fun simpleAlertDialog(title: String, message:String){
+        val builder = android.app.AlertDialog.Builder(this)
+        builder.setTitle(title)
+            .setMessage(message)
+            .setPositiveButton("OK"){ dialogInterface, which ->
+                dialogInterface.dismiss()
+            }
+        val simpleAlertDialog = builder.create()
+        //simpleAlertDialog.setCancelable(false) //dialog can't be cancel outside
+        simpleAlertDialog.show()
+    }
 
 }
 

@@ -4,6 +4,7 @@ package com.example.goodtogoappv11
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.goodtogoappv11.model.Constants
@@ -66,7 +67,7 @@ class SettingActivity : BaseActivity() {
         super.onStart()
     }
 
-    fun logout() {
+    private fun logout() {
         if(Constants.isNetworkAvailable(this)){
             //Toast.makeText(this,"network connected", Toast.LENGTH_SHORT).show()
 
@@ -130,5 +131,21 @@ class SettingActivity : BaseActivity() {
 
             })
         }
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle presses on the action bar menu items
+
+        /** Not working*/
+        when (item.itemId) {
+            R.id.home -> {
+                finish()
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right)
+                return true
+            }
+
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

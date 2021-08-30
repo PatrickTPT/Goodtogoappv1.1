@@ -66,7 +66,7 @@ object Constants {
     var vReloadList = ArrayList<ReloadResponseItem>()
 
     //Saved StoreList
-    val storeList = ArrayList<Store>()
+    val vStoreList = ArrayList<Store>()
 
 
     //Checking Network

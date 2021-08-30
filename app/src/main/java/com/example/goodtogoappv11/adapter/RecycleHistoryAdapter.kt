@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.goodtogoappv11.R
 import com.example.goodtogoappv11.model.Constants
-import com.example.goodtogoappv11.model.Constants.storeList
+import com.example.goodtogoappv11.model.Constants.vStoreList
 import com.example.goodtogoappv11.network.reload.ReloadResponseItem
 import kotlinx.android.synthetic.main.item_tag_layout.view.*
 import kotlinx.android.synthetic.main.item_together_layout.view.*
@@ -84,7 +84,7 @@ class RecycleHistoryAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val model = items[position]
-        val idToName = storeList.first{it.id == model.storeID}
+        val idToName = vStoreList.first{it.id == model.storeID}
         val containerListToString = model.containerList.toString()
         val containerListNoBracket = containerListToString.substring(1,containerListToString.length-1)
         val sdf=SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'",Locale.ENGLISH)
@@ -98,8 +98,8 @@ class RecycleHistoryAdapter(
         val parseString = ""
         for(i in model.deliverContent.indices){
             parseString +
-                    "${ model.deliverContent.get(i).containerType }\n" +
-                    "${ model.deliverContent.get(i).amount}\n"
+                    "${ model.deliverContent[i].containerType }\n" +
+                    "${ model.deliverContent[i].amount}\n"
         }
 
 

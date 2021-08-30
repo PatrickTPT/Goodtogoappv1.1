@@ -12,7 +12,7 @@ import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.StoreListAdapter
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.recycleStore
-import com.example.goodtogoappv11.model.Constants.storeList
+import com.example.goodtogoappv11.model.Constants.vStoreList
 import com.example.goodtogoappv11.model.Store
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.android.synthetic.main.fragment_store_dialog.*
@@ -30,7 +30,7 @@ class StoreListBottomSheetDialogFragment : BottomSheetDialogFragment(), OnAClick
         super.onCreate(savedInstanceState)
 
         //s = intent.getSerializableExtra("storeList") as ArrayList<Store>
-        displayStoreList.addAll(storeList.sortedBy{it.id})
+        displayStoreList.addAll(vStoreList.sortedBy{it.id})
 
 
     }
@@ -63,7 +63,7 @@ class StoreListBottomSheetDialogFragment : BottomSheetDialogFragment(), OnAClick
                      if (newText != null) {
                          displayStoreList.clear()
                          val search = newText.lowercase(Locale.getDefault())
-                         Constants.storeList.forEach {
+                         Constants.vStoreList.forEach {
                              if (it.viewType == Constants.VIEW_TYPE_ONE) {
                                  if (it.id.toString().lowercase().contains(search)
                                      || it.name.toString().lowercase().contains(search)

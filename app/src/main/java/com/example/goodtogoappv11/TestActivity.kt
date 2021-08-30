@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goodtogoappv11.adapter.OnAClickListener
 import com.example.goodtogoappv11.adapter.StoreListAdapter
 import com.example.goodtogoappv11.model.Constants
-import com.example.goodtogoappv11.model.Constants.storeList
+import com.example.goodtogoappv11.model.Constants.vStoreList
 import com.example.goodtogoappv11.model.Store
 import kotlinx.android.synthetic.main.activity_test.*
 import java.util.*
@@ -29,12 +29,11 @@ class TestActivity : BaseActivity(), OnAClickListener {
 
 
         //s = intent.getSerializableExtra("storeList") as ArrayList<Store>
-        displayStoreList.addAll(storeList)
+        displayStoreList.addAll(vStoreList)
         setupStoreRecyclerView()
 
 
         searchView = findViewById<SearchView>(R.id.sv_store_list)
-
         setupSearchView()
 
     }
@@ -50,7 +49,7 @@ class TestActivity : BaseActivity(), OnAClickListener {
                 if (newText!=null) {
                     displayStoreList.clear()
                     val search = newText!!.lowercase(Locale.getDefault())
-                    storeList.forEach {
+                    vStoreList.forEach {
                         if (it.viewType == Constants.VIEW_TYPE_ONE) {
                             if (it.name!!.lowercase().contains(search)
                                 || it.id.toString().lowercase().contains(search)
@@ -60,13 +59,15 @@ class TestActivity : BaseActivity(), OnAClickListener {
                         }
                     }
                     rv_store_list.adapter?.notifyDataSetChanged()
+                    return true
 
                 } else {
                     displayStoreList.clear()
-                    displayStoreList.addAll(storeList.sortedBy{it.id})
+                    displayStoreList.addAll(vStoreList.sortedBy{it.id})
                 //sortByBoxingDateDescending()
+                    return true
                 }
-                return true
+
             }
 
         })
@@ -77,7 +78,7 @@ class TestActivity : BaseActivity(), OnAClickListener {
     private fun setupStoreRecyclerView(){
         rv_store_list.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
-        val adapter = StoreListAdapter(storeList, this, this)
+        val adapter = StoreListAdapter(vStoreList, this, this)
         rv_store_list.adapter = adapter
         rv_store_list.setHasFixedSize(true)
 
@@ -97,7 +98,7 @@ class TestActivity : BaseActivity(), OnAClickListener {
 
     override fun onAClick(position: Int) {
         //Toast.makeText(this,"Item $position clicked", Toast.LENGTH_SHORT).show()
-        val clickedItem = storeList[position]
+        val clickedItem = vStoreList[position]
         val intent = Intent(this@TestActivity, RecycleActivity::class.java)
         intent.putExtra("EXTRACT_STORE_NAME",clickedItem.name.toString())
         startActivity(intent)

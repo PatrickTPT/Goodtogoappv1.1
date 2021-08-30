@@ -1,4 +1,4 @@
-package com.example.goodtogoappv11.network
+package com.example.goodtogoappv11.network.errors
 
 data class ErrorResponse (
 

@@ -16,6 +16,7 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16259057971014493" />
         <entry key="app/src/main/res/layout/activity_recycle_history.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/activity_result.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_role_selection.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_scan.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_setting.xml" value="0.25" />
@@ -34,6 +35,7 @@
         <entry key="app/src/main/res/layout/item_bottom_infobox_fullwidth_2.xml" value="0.20108695652173914" />
         <entry key="app/src/main/res/layout/item_filter.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_in_stock_layout.xml" value="0.1046875" />
+        <entry key="app/src/main/res/layout/item_role_selection.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_scan_module.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_single_cup_infobox.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_sort.xml" value="0.375" />

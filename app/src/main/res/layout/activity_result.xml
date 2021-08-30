@@ -33,9 +33,9 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/tv_history"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:id="@+id/history"
             android:hint="history"/>
 
         <Button

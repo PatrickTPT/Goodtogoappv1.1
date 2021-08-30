@@ -35,7 +35,7 @@ class InputInStockAdapter(
                 Toast.makeText(context,"How dare you!",Toast.LENGTH_SHORT).show()
                 items.removeAt(absoluteAdapterPosition)
                 notifyDataSetChanged()
-
+                //setResult=RESULT_OK
             }
         }
 

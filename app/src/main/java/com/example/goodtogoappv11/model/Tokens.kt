@@ -21,8 +21,6 @@ object Tokens {
         val expmillis = millis+259200000
 
 
-
-        //val claims : Claims = Jwts.claims()
         /**proved by Ezou*/
         val base64Encoded = Base64.encodeToString(mySecretKey.toByteArray(), 0)  //it worked! first step
 
@@ -61,6 +59,28 @@ object Tokens {
       }*/
     }
 
+    fun standAuthWithTime(date: Date): String{
+
+        val cal = Calendar.getInstance(Locale.TAIWAN)
+        cal.time = Date()
+        val millis = cal.timeInMillis
+        val expmillis = millis+259200000
+
+
+        /**proved by Ezou*/
+        val base64Encoded = Base64.encodeToString(mySecretKey.toByteArray(), 0)  //it worked! first step
+
+        return Jwts.builder()
+            .setHeaderParam("typ","JWT")
+            .claim("exp",expmillis)
+            .claim("iat",millis)
+            .claim("jti",Constants.reqID())
+            .claim("orderTime",date.time)
+            .signWith(SignatureAlgorithm.HS256,convertStringToSecretKey(base64Encoded))
+            .compact()
+
+
+    }
 
 
     fun convertStringToSecretKey(encodedKey: String?): SecretKey {

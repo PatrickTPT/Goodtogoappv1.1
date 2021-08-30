@@ -1,6 +1,9 @@
 package com.example.goodtogoappv11.network
 
+
+import com.example.goodtogoappv11.network.readytoclean.ErrorDict
 import com.example.goodtogoappv11.network.reload.ReloadResponse
+import com.example.goodtogoappv11.network.returnobject.ReturnResponse
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.http.Body
@@ -18,7 +21,7 @@ interface ourService {
         @Body body: JsonObject
         ): Call<LoginResponse>
 
-
+    /** Success */
     @POST("users/logout")
     fun postLogout(
         @Header("Authorization") Authorization: String,
@@ -55,13 +58,29 @@ interface ourService {
         @Header("ApiKey") ApiKey: String
     ) :Call<BoxToSignListResponse>
 
-
+    /** Success */
     @GET("deliveryList/reloadHistory")
     fun getReloadList(
         @Header("Authorization") Authorization: String,
         @Header("ApiKey") ApiKey: String
     ) :Call<ReloadResponse>
 
+    /** Success */
+    @POST("containers/readyToClean/list")
+    fun postReadyToClean(
+        @Header("Authorization") Authorization: String,
+        @Header("ApiKey") ApiKey: String,
+        @Body body: JsonObject
+    ) :Call<ReadyToCleanResponse>
+    //path example: @Path("container") container:String
+
+    /** Success */
+    @POST("containers/return/list")
+    fun postReturn(
+        @Header("Authorization") Authorization: String,
+        @Header("ApiKey") ApiKey: String,
+        @Body body: JsonObject
+    ) :Call<ReturnResponse>
 
 
 
@@ -69,11 +88,7 @@ interface ourService {
 
 
 
-
-
-
-
-
+    //test REST API
     @GET("posts/1")
     fun testConnection(
         @Header("AAA") AAA:Int,

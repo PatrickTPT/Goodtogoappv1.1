@@ -212,6 +212,14 @@ class ToDeliverAdapter(
 
         when (holder) {
             is ViewHolder -> {
+
+                //val oldsdf = SimpleDateFormat("EEE MMM dd HH:mm:ss Z yyyy" ,Locale.TAIWAN)
+                //val deliveryDate = oldsdf.parse(model.date.toString())
+                //val newsdf = SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN)
+                //val today = newsdf.parse(Date().toString())
+
+
+
                 holder.boxId?.text = model.boxid.toString()
                 holder.boxTitle?.text =
                     "${ SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN).format(model.date) } 出貨｜${model.storeName}"
@@ -228,12 +236,14 @@ class ToDeliverAdapter(
                     notifyItemChanged(position)
                 }
 
+
+
                 holder.deliveryArrived.visibility =
                     if(model.status == BOX_STATUS_TODELIVER) View.VISIBLE else View.GONE
                 holder.signBoxForStore.visibility =
                     if(model.status == BOX_STATUS_TOBESIGNED) View.VISIBLE else View.GONE
                 holder.deliverToday.visibility =
-                    if(model.status == BOX_STATUS_TODELIVER ) View.VISIBLE else View.GONE
+                    if(model.status == BOX_STATUS_TODELIVER  ) View.VISIBLE else View.GONE
                 holder.waitToSign.visibility =
                     if(model.status == BOX_STATUS_TOBESIGNED) View.VISIBLE else View.GONE
                 holder.cancelArrival.visibility =

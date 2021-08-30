@@ -11,6 +11,7 @@ import com.example.goodtogoappv11.model.Box
 import com.example.goodtogoappv11.model.Boxes
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.mediumList
+import com.example.goodtogoappv11.model.Constants.myStationName
 import kotlinx.android.synthetic.main.activity_scan.*
 import kotlinx.android.synthetic.main.item_bottom_infobox.rv_bottom_infobox
 import java.text.SimpleDateFormat
@@ -25,16 +26,12 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
         childList.clear()
 
 
-        val stationName = intent.getStringExtra("EXTRACT_STATION_NAME")
+        //val stationName = intent.getStringExtra("EXTRACT_STATION_NAME")
 
         val actionBar = supportActionBar
-        if (stationName != null) {
-            actionBar?.title = "裝箱｜${stationName}"
-        } else {
-            actionBar?.title = "裝箱｜調度站"
-        }
-        actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.title = "裝箱｜${myStationName}"
 
+        actionBar?.setDisplayHomeAsUpEnabled(true)
 
 
         idInputSlot = findViewById(R.id.et_idInputSlot)
@@ -53,14 +50,12 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
 
         //TODO: set should-have input
 
-        //
-        //var bottomBoxExpansionState = false
+
         ll_infobox_header.setOnClickListener {
             if (rv_bottom_infobox.visibility == View.GONE) {
                 rv_bottom_infobox.visibility = View.VISIBLE
                 if(childList.size>0){
                     tv_info_left_top.visibility = View.VISIBLE
-
                 }
             } else {
                 rv_bottom_infobox.visibility = View.GONE
@@ -68,7 +63,6 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
             }
 
 
-            //bottomBoxExpansionState = !bottomBoxExpansionState
         }
 
 
@@ -145,17 +139,17 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
 
             idInputSlot.text.clear()
             tv_box_count.text = childList.size.toString() //要記的是list的資料筆數
-            println("資料增加，總筆數: ${childList.size}")
+            //println("資料增加，總筆數: ${childList.size}")
             tv_box_count.visibility = View.VISIBLE
             tv_scanWord.text = "已登錄容器"
-            showSnackbar("假裝驗證成功")
+            showSnackbar("輸入成功")
 
 
         }
     }
 
     fun createChild(cupid: String): Boxes.BoxChild{
-        return Boxes.BoxChild("大器杯", cupid.toInt() ,
+        return Boxes.BoxChild("", cupid.toInt() ,
             Constants.BOX_STATUS_READYTOCLEAN, Constants.VIEW_TYPE_ONE)
     }
 
@@ -226,8 +220,24 @@ class BoxingActivity : BaseInputActivity(), OnAClickListener {
 
 
     override fun onAClick(position: Int) {
-        quickToast("I~~~")
-    }
+        val clickItems = childList[position]
+
+        tv_box_count.text = childList.size.toString()
+
+            if (childList.size < 1)  {
+                tv_box_count.visibility = View.GONE
+                tv_scanWord.text = String.format(getString(R.string.no_input_container_yet))
+            } else {
+                tv_box_count.visibility = View.VISIBLE
+            }
+        }
+
+
+
+
+
+
+
 
 
 

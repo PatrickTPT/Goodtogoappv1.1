@@ -14,7 +14,9 @@ import com.example.goodtogoappv11.data.Datasource
 import com.example.goodtogoappv11.model.Constants
 import com.example.goodtogoappv11.model.Constants.mediumList
 import kotlinx.android.synthetic.main.activity_delivery_history.*
-import kotlinx.android.synthetic.main.item_sort.*
+import kotlinx.android.synthetic.main.item_sort.ll_sort_button
+import kotlinx.android.synthetic.main.item_sort.tv_sort_title
+import kotlinx.android.synthetic.main.layout_function_bar.*
 import java.util.*
 
 class DeliveryHistoryActivity : BaseActivity(), OnAClickListener {
@@ -32,7 +34,7 @@ class DeliveryHistoryActivity : BaseActivity(), OnAClickListener {
         displayList.clear()
         displayList.addAll(mediumList.filter{it.status == Constants.BOX_STATUS_TOBEUSED})
 
-
+        ll_filter_button.visibility = View.GONE
 
 
         setupDeliveryRecordRecyclerView()

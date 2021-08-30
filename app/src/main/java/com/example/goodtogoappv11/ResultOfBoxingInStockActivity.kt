@@ -12,7 +12,7 @@ class ResultOfBoxingInStockActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_result)
 
-        val history = findViewById<TextView>(R.id.history)
+        val history = findViewById<TextView>(R.id.tv_history)
         //val testing =intent.getStringArrayListExtra("NewBox")
         val testing =intent.getIntExtra("NewBox", 0)
 

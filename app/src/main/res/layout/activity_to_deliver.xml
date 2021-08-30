@@ -4,37 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ToDeliverActivity"
     android:background="@color/lightGrey"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ToDeliverActivity">
 
 
-<include layout="@layout/layout_function_bar"/>
+    <include layout="@layout/layout_function_bar" />
 
 
+    <TextView
+        android:id="@+id/tv_noContainer2_1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/no_box_inside"
+        tools:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tv_noContainer2_1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="@string/no_box_inside"
-            tools:visibility="gone" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_to_deliver"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_to_deliver"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
 
     <include
         layout="@layout/item_bottom_infobox_fullwidth_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        />
+        android:layout_gravity="bottom|end" />
 
 
 </LinearLayout>
