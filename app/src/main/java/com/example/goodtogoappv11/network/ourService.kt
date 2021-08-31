@@ -1,7 +1,7 @@
 package com.example.goodtogoappv11.network
 
 
-import com.example.goodtogoappv11.network.readytoclean.ErrorDict
+import com.example.goodtogoappv11.network.readytoclean.ReadyToCleanResponse
 import com.example.goodtogoappv11.network.reload.ReloadResponse
 import com.example.goodtogoappv11.network.returnobject.ReturnResponse
 import com.google.gson.JsonObject
